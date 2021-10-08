@@ -30,17 +30,17 @@ signup.addEventListener('submit', (e) => {
 	// Prevent the website from reloading when submit button is pressed.
 	e.preventDefault();
 
-	// Get User Info
+	// Get user email and password
 	const email = signup['signup-email'].value;
 	const password = signup['signup-password'].value;
 
-	// Sign up the user
+	// DELETE for later
 	console.log(email, password);
 
-	//const auth = getAuth();
+	// Sign up the user
 	createUserWithEmailAndPassword(auth, email, password)
 	  .then((userCredential) => {
-	    // Signed in
+	    // Store account to database
 	    console.log(userCredential);
 	    const user = userCredential.user;
 	    // ...
@@ -48,6 +48,8 @@ signup.addEventListener('submit', (e) => {
 	  .catch((error) => {
 	    const errorCode = error.code;
 	    const errorMessage = error.message;
+	    console.log(errorCode);
+	    console.log(errorMessage);
 	    // ..
 	  });
 });
