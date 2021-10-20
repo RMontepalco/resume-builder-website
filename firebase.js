@@ -28,27 +28,34 @@ const analytics = getAnalytics(app);
 // Authentication State Observer and User Data
 // Track whether a user is logged in or logged out, 
 // and show certain web elements depending on the status
-onAuthStateChanged(auth, (user) => {
+onAuthStateChanged(auth, async (user) => {
 	if (user) {
-		// User is signed in, see docs for a list of available properties
+		// User is logged in, see docs for a list of available properties
 		// https://firebase.google.com/docs/reference/js/firebase.User
-		console.log('User logged in: ', user);
 		const uid = user.uid;
-		// ...
+		setupUI(user);
+		html = '';
+		console.log('User logged in: ', user);
+
+		// Retrive user's resumes from the database (WIP)
+		const querySnapshot = await getDocs(collection(db, "resumes"));
+		let i = 0;
+		querySnapshot.forEach((doc) => {
+			console.log(doc.id, " => ", doc.data());
+			displayResumes(doc);
+			i++;
+		});
+
+		// User has no resumes in the database
+		if (i == 0) {
+			guideList.innerHTML = '<h4> You have no resumes. </h4>'
+		};
 	} else {
+		// User is logged out
 		console.log('User logged out');
-		// User is signed out
-		// ...
+		setupUI();
+		hideResumes();
 	}
-});
-
-
-// Retrive user's resumes from the database (WIP)
-const querySnapshot = await getDocs(collection(db, "resumes"));
-querySnapshot.forEach((doc) => {
-  // doc.data() is never undefined for query doc snapshots
-  console.log(doc.id, " => ", doc.data());
-  displayResumes(doc);
 });
 
 

@@ -11,30 +11,37 @@
 	<body>
 		<h1>ResuMe</h1>
 
-		<!-- Sign Up Form -->
-		<form id="signup-form">
-			<input type="email" id="signup-email"
-			placeholder="Email Address" />
-			<input type="password" id="signup-password"
-			placeholder="Password" />
-			<button>Sign Up</button>
-		</form>
+		<!-- Display when user is logged out -->
+		<div class="logged-out">
+			<!-- Sign Up Form -->
+			<form id="signup-form">
+				<input type="email" id="signup-email"
+				placeholder="Email Address" />
+				<input type="password" id="signup-password"
+				placeholder="Password" />
+				<button>Sign Up</button>
+			</form>
+		</div>
 
-		<!-- Log In Form -->
-		<form id="login-form">
-			<input type="email" id="login-email"
-			placeholder="Email Address" />
-			<input type="password" id="login-password"
-			placeholder="Password" />
-			<button>Log In</button>
-		</form>
+		<!-- Display when user is logged out -->
+		<div class="logged-out">
+			<!-- Log In Form -->
+			<form id="login-form">
+				<input type="email" id="login-email"
+				placeholder="Email Address" />
+				<input type="password" id="login-password"
+				placeholder="Password" />
+				<button>Log In</button>
+			</form>
+		</div>
 
-		<!-- Log Out -->
-		<button id="logout">Log Out</button>
-
-		<!-- Display user's resumes -->
-		<ul id="resumes">
-		</ul>
+		<!-- Display when user is logged in -->
+		<div class="logged-in">
+			<!-- Display user's resumes -->
+			<ul id="resumes"></ul>
+			<!-- Log Out -->
+			<button id="logout">Log Out</button>
+		</div>
 
 		<!-- JavaScript files -->
 		<script type="module" src="firebase.js"></script>
