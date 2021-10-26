@@ -3,7 +3,7 @@
 // https://firebase.google.com/docs/web/setup#available-libraries
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js";
-import { getFirestore, collection, doc, getDoc, getDocs, setDoc } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore.js";
+import { getFirestore, collection, doc, getDoc, getDocs, setDoc, addDoc } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-analytics.js";
 
 // Your web app's Firebase configuration
@@ -71,9 +71,13 @@ signup.addEventListener('submit', (e) => {
 
 	// Sign up the user
 	createUserWithEmailAndPassword(auth, email, password)
-	  .then((userCredential) => {
+	  .then(async (userCredential) => {
 	    // Store account to database
 	    const user = userCredential.user;
+	    // add user's UID to collection of users
+	    await setDoc(doc(db, "users", userCredential.user.uid), {
+	    	email: userCredential.user.email
+	    });
 	  })
 	  .catch((error) => {
 	    const errorCode = error.code;
