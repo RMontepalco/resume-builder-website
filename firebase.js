@@ -3,8 +3,9 @@
 // https://firebase.google.com/docs/web/setup#available-libraries
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js";
-import { getFirestore, collection, doc, getDoc, getDocs, setDoc, addDoc } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore.js";
+import { getFirestore, collection, doc, getDoc, getDocs, setDoc, addDoc, updateDoc } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-analytics.js";
+
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -18,11 +19,15 @@ appId: "1:1064855568995:web:b6fd5350c5e96ab665ae56",
 measurementId: "G-ZMJ23R8MF1"
 };
 
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const analytics = getAnalytics(app);
+var currentUser;
+var uid;
+var templateID;
 
 
 // Authentication State Observer and User Data
@@ -32,8 +37,9 @@ onAuthStateChanged(auth, async (user) => {
 	if (user) {
 		// User is logged in, see docs for a list of available properties
 		// https://firebase.google.com/docs/reference/js/firebase.User
-		const uid = user.uid;
-		setupUI(user);
+		currentUser = user;
+		uid = user.uid;
+		showAccountDashboard(user);
 		html = '';
 		console.log('User logged in: ', user);
 
@@ -53,7 +59,7 @@ onAuthStateChanged(auth, async (user) => {
 	} else {
 		// User is logged out
 		console.log('User logged out');
-		setupUI(user);
+		showAccountDashboard(user);
 		hideResumes();
 	}
 });
@@ -73,7 +79,7 @@ signup.addEventListener('submit', (e) => {
 	createUserWithEmailAndPassword(auth, email, password)
 	  .then(async (userCredential) => {
 	    // Store account to database
-	    const user = userCredential.user;
+	    user = userCredential.user;
 	    // add user's UID to collection of users
 	    await setDoc(doc(db, "users", userCredential.user.uid), {
 	    	email: userCredential.user.email
@@ -101,7 +107,7 @@ login.addEventListener('submit', (e) => {
 	signInWithEmailAndPassword(auth, email, password)
 		.then((userCredential) => {
 			// Signed in
-			const user = userCredential.user;
+			user = userCredential.user;
 		})
 		.catch((error) => {
 			const errorCode = error.code;
@@ -124,76 +130,174 @@ logout.addEventListener('click', (e) => {
 });
 
 
-// Create a new resume (US 4, FR 4.1) (WIP)
-
-
-// Add contact information to resume template (US 5, FR 5.1)
-const addContactInformation = document.querySelector("#create-resume");
-addContactInformation.addEventListener('click', (e) => {
+// Begin the resume creation process
+const createResume = document.querySelector("#create-resume");
+createResume.addEventListener('click', (e) => {
 	e.preventDefault();
+	showResumeTemplates();
+});
+
+
+// Select a resume template (US 4, FR 4.1) (WIP)
+const selectResumeTemplate = document.querySelector("#resume-templates-form");
+selectResumeTemplate.addEventListener('submit', async (e) => {
+	e.preventDefault();
+
+	const template = await addDoc(collection(db, "users", uid, "resumes"), {
+		resumeName: "Resume"
+	});
+	templateID = template.id
+
 	showContactInformation();
 });
 
 
-// Add summary statement to resume template (US 6, FR 6.1)
-const addSummaryStatement = document.querySelector("#contact-information-form");
-addSummaryStatement.addEventListener('submit', (e) => {
+// Add contact information to resume template (US 5, FR 5.1)
+const addContactInformation = document.querySelector("#contact-information-form");
+addContactInformation.addEventListener('submit', async (e) => {
 	e.preventDefault();
+
+	await updateDoc(doc(db, "users", uid, "resumes", templateID), {
+		firstName: addContactInformation['first-name'].value,
+		lastName: addContactInformation['last-name'].value,
+		city: addContactInformation['city'].value,
+		state: addContactInformation['state'].value,
+		zipCode: addContactInformation['zip-code'].value,
+		phoneNumber: addContactInformation['phone-number'].value,
+		emailAddress: addContactInformation['contact-information-email'].value
+	});
+
 	showSummaryStatement();
 });
 
 
-// Add education to resume template (US 7, FR 7.1)
-const addEducation = document.querySelector("#summary-statement-form");
-addEducation.addEventListener('submit', (e) => {
+// Add summary statement to resume template (US 6, FR 6.1)
+const addSummaryStatement = document.querySelector("#summary-statement-form");
+addSummaryStatement.addEventListener('submit', async (e) => {
 	e.preventDefault();
+
+	await updateDoc(doc(db, "users", uid, "resumes", templateID), {
+		summaryStatement: addSummaryStatement['summary-statement'].value
+	});
+
 	showEducation();
 });
 
 
-// Add technical skills to resume template (US 8, FR 8.1)
-const addTechnicalSkills = document.querySelector('#education-form');
-addTechnicalSkills.addEventListener('submit', (e) => {
+// Add education to resume template (US 7, FR 7.1)
+const addEducation = document.querySelector('#education-form');
+addEducation.addEventListener('submit', async (e) => {
 	e.preventDefault();
+
+	await updateDoc(doc(db, "users", uid, "resumes", templateID), {
+		schoolName: addEducation['school-name'].value,
+		degreeLevel: addEducation['degree-level'].value,
+		major: addEducation['major'].value,
+		gpa: addEducation['gpa'].value,
+		educationStartDate: addEducation['education-start-date'].value,
+		graudationDate: addEducation['graduation-date'].value,
+		relatedCourseWork: addEducation['related-coursework'].value
+	});
+
 	showTechnicalSkills();
 });
 
 
-// Add work experience to resume template (US 9, FR 9.1)
-const addWorkExperience = document.querySelector('#technical-skills-form');
-addWorkExperience.addEventListener('submit', (e) => {
+// Add technical skills to resume template (US 8, FR 8.1)
+const addTechnicalSkills = document.querySelector('#technical-skills-form');
+addTechnicalSkills.addEventListener('submit', async (e) => {
 	e.preventDefault();
+
+	await updateDoc(doc(db, "users", uid, "resumes", templateID), {
+		technicalSkills: addTechnicalSkills['technical-skills'].value
+	});
+
 	showWorkExperience();
 });
 
 
-// Add  to resume template (US 10, FR 10.1)
-const addProjectExperience = document.querySelector('#work-experience-form');
-addProjectExperience.addEventListener('submit', (e) => {
+// Add work experience to resume template (US 9, FR 9.1)
+const addWorkExperience = document.querySelector('#work-experience-form');
+addWorkExperience.addEventListener('submit', async (e) => {
 	e.preventDefault();
+
+	await updateDoc(doc(db, "users", uid, "resumes", templateID), {
+		workPosition: addWorkExperience['work-position'].value,
+		workCompanyName: addWorkExperience['work-company-name'].value,
+		workCity: addWorkExperience['work-city'].value,
+		workStartDate: addWorkExperience['work-start-date'].value,
+		workEndDate: addWorkExperience['work-end-date'].value,
+		workDescription: addWorkExperience['work-description'].value
+	});
+
 	showProjectExperience();
 });
 
 
-// Add certifications to resume template (US , FR .1)
-const addCertifications = document.querySelector('#project-experience-form');
-addCertifications.addEventListener('submit', (e) => {
+// Add  to resume template (US 10, FR 10.1)
+const addProjectExperience = document.querySelector('#project-experience-form');
+addProjectExperience.addEventListener('submit', async (e) => {
 	e.preventDefault();
+
+	await updateDoc(doc(db, "users", uid, "resumes", templateID), {
+		projectName: addProjectExperience['project-name'].value,
+		projectCompanyName: addProjectExperience['project-company-name'].value,
+		projectCity: addProjectExperience['project-city'].value,
+		projectStartDate: addProjectExperience['project-start-date'].value,
+		projectEndDate: addProjectExperience['project-end-date'].value,
+		projectDescription: addProjectExperience['project-description'].value
+	});
+
 	showCertifications();
 });
 
 
-// Add awards to resume template (US , FR .1)
-const addAwards = document.querySelector('#certifications-form');
-addAwards.addEventListener('submit', (e) => {
+// Add certifications to resume template (US 11, FR 11.1)
+const addCertifications = document.querySelector('#certifications-form');
+addCertifications.addEventListener('submit', async (e) => {
 	e.preventDefault();
+
+	await updateDoc(doc(db, "users", uid, "resumes", templateID), {
+		certificationName: addCertifications['certification-name'].value,
+		certificationOrganization: addCertifications['certification-organization'].value,
+		certificationIssuedDate: addCertifications['certification-issued-date'].value,
+		certificationExpirationDate: addCertifications['certification-expiration-date'].value
+	});
+
 	showAwards();
 });
 
 
-// Add activities to resume template (US , FR .1)
-const addActivities = document.querySelector('#awards-form');
-addActivities.addEventListener('submit', (e) => {
+// Add awards to resume template (US 12, FR 12.1)
+const addAwards = document.querySelector('#awards-form');
+addAwards.addEventListener('submit', async (e) => {
 	e.preventDefault();
+
+	await updateDoc(doc(db, "users", uid, "resumes", templateID), {
+		awardName: addAwards['award-name'].value,
+		awardOrganization: addAwards['award-organization'].value,
+		awardGivenDate: addAwards['award-given-date'].value
+	});
+
 	showActivities();
 });
+
+
+// Add activities to resume template (US 13, FR 13.1)
+const addActivities = document.querySelector("#activities-form");
+addActivities.addEventListener('click', async (e) => {
+	e.preventDefault();
+
+	await updateDoc(doc(db, "users", uid, "resumes", templateID), {
+		activityRole: addActivities['activity-role'].value,
+		activityName: addActivities['activity-name'].value,
+		activityStartDate: addActivities['activity-start-date'].value,
+		activityEndDate: addActivities['activity-end-date'].value,
+		activityDescription: addActivities['activity-description'].value
+	});
+
+	showAccountDashboard(currentUser);
+});
+
+
+// Store resume into the database (US 14, FR 14.1)

@@ -4,6 +4,7 @@ const loggedIn = document.querySelectorAll('.logged-in');
 const accountEmail = document.querySelector('#account-email');
 const resumeList = document.querySelector('#resume-list');
 const resumeCreation = document.querySelectorAll('.resume-creation');
+const resumeTemplatesForm = document.querySelectorAll('#resume-templates-form');
 const contactInformationForm = document.querySelectorAll('#contact-information-form');
 const summaryStatementForm = document.querySelectorAll('#summary-statement-form');
 const educationForm = document.querySelectorAll('#education-form');
@@ -17,7 +18,7 @@ let html = '';
 
 
 // Hide or show web elements based on authentication state
-const setupUI = (user) => {
+const showAccountDashboard = (user) => {
   if (user) {
     // User is logged in
     // Display user's email
@@ -29,12 +30,14 @@ const setupUI = (user) => {
     // Show logged in elements and hide logged out elements
     loggedIn.forEach(item => item.style.display = 'block');
     loggedOut.forEach(item => item.style.display = 'none');
+    resumeCreation.forEach(item => item.style.display = 'none');
   } else {
     // User is logged out
     accountEmail.innerHTML = '';
     //show logged out elements and hide logged in elements
     loggedIn.forEach(item => item.style.display = 'none');
     loggedOut.forEach(item => item.style.display = 'block');
+    resumeCreation.forEach(item => item.style.display = 'none');
   }
 };
 
@@ -59,17 +62,28 @@ const hideResumes = () => {
 };
 
 
-// Display contact information screen
-const showContactInformation = () => {
+// Show resume templates screen
+const showResumeTemplates = () => {
   loggedIn.forEach(item => item.style.display = 'none');
   resumeCreation.forEach(item => item.style.display = 'block');
+  resumeTemplatesForm.forEach(item => item.style.display = 'block');
+  contactInformationForm.forEach(item => item.style.display = 'none');
+}
+
+
+// Display contact information screen
+const showContactInformation = () => {
+  resumeTemplatesForm.forEach(item => item.style.display = 'none');
   contactInformationForm.forEach(item => item.style.display = 'block');
+  summaryStatementForm.forEach(item => item.style.display = 'none');
 };
+
 
 //Display summary statement screen
 const showSummaryStatement = () => {
   contactInformationForm.forEach(item => item.style.display = 'none');
   summaryStatementForm.forEach(item => item.style.display = 'block');
+  educationForm.forEach(item => item.style.display = 'none');
 };
 
 
@@ -77,6 +91,7 @@ const showSummaryStatement = () => {
 const showEducation = () => {
   summaryStatementForm.forEach(item => item.style.display = 'none');
   educationForm.forEach(item => item.style.display = 'block');
+  technicalSkillsForm.forEach(item => item.style.display = 'none');
 };
 
 
@@ -84,6 +99,7 @@ const showEducation = () => {
 const showTechnicalSkills = () => {
   educationForm.forEach(item => item.style.display = 'none');
   technicalSkillsForm.forEach(item => item.style.display = 'block');
+  workExperienceForm.forEach(item => item.style.display = 'none');
 };
 
 
@@ -91,6 +107,7 @@ const showTechnicalSkills = () => {
 const showWorkExperience = () => {
   technicalSkillsForm.forEach(item => item.style.display = 'none');
   workExperienceForm.forEach(item => item.style.display = 'block');
+  projectExperienceForm.forEach(item => item.style.display = 'none');
 };
 
 
@@ -98,6 +115,7 @@ const showWorkExperience = () => {
 const showProjectExperience = () => {
   workExperienceForm.forEach(item => item.style.display = 'none');
   projectExperienceForm.forEach(item => item.style.display = 'block');
+  certificationsForm.forEach(item => item.style.display = 'none');
 };
 
 
@@ -105,6 +123,7 @@ const showProjectExperience = () => {
 const showCertifications = () => {
   projectExperienceForm.forEach(item => item.style.display = 'none');
   certificationsForm.forEach(item => item.style.display = 'block');
+  awardsForm.forEach(item => item.style.display = 'none');
 };
 
 
@@ -112,6 +131,7 @@ const showCertifications = () => {
 const showAwards = () => {
   certificationsForm.forEach(item => item.style.display = 'none');
   awardsForm.forEach(item => item.style.display = 'block');
+  activitiesForm.forEach(item => item.style.display = 'none');
 };
 
 
