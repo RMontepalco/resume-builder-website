@@ -38,7 +38,7 @@ onAuthStateChanged(auth, async (user) => {
 		console.log('User logged in: ', user);
 
 		// Retrive user's resumes from the database (WIP)
-		const querySnapshot = await getDocs(collection(db, "resumes"));
+		const querySnapshot = await getDocs(collection(db, "users", uid, "resumes"));
 		let i = 0;
 		querySnapshot.forEach((doc) => {
 			console.log(doc.id, " => ", doc.data());
@@ -48,12 +48,12 @@ onAuthStateChanged(auth, async (user) => {
 
 		// User has no resumes in the database
 		if (i == 0) {
-			guideList.innerHTML = '<h4> You have no resumes. </h4>'
+			resumeList.innerHTML = '<h4> You have no resumes. </h4>'
 		};
 	} else {
 		// User is logged out
 		console.log('User logged out');
-		setupUI();
+		setupUI(user);
 		hideResumes();
 	}
 });
@@ -84,7 +84,6 @@ signup.addEventListener('submit', (e) => {
 	    const errorMessage = error.message;
 	    console.log(errorCode);
 	    console.log(errorMessage);
-	    // ..
 	  });
 });
 
@@ -120,6 +119,81 @@ logout.addEventListener('click', (e) => {
 	signOut(auth).then(() => {
 			// Sign-out successful.
 		}).catch((error) => {
-			// An error happened.
+			// An error occured.
 		});
+});
+
+
+// Create a new resume (US 4, FR 4.1) (WIP)
+
+
+// Add contact information to resume template (US 5, FR 5.1)
+const addContactInformation = document.querySelector("#create-resume");
+addContactInformation.addEventListener('click', (e) => {
+	e.preventDefault();
+	showContactInformation();
+});
+
+
+// Add summary statement to resume template (US 6, FR 6.1)
+const addSummaryStatement = document.querySelector("#contact-information-form");
+addSummaryStatement.addEventListener('submit', (e) => {
+	e.preventDefault();
+	showSummaryStatement();
+});
+
+
+// Add education to resume template (US 7, FR 7.1)
+const addEducation = document.querySelector("#summary-statement-form");
+addEducation.addEventListener('submit', (e) => {
+	e.preventDefault();
+	showEducation();
+});
+
+
+// Add technical skills to resume template (US 8, FR 8.1)
+const addTechnicalSkills = document.querySelector('#education-form');
+addTechnicalSkills.addEventListener('submit', (e) => {
+	e.preventDefault();
+	showTechnicalSkills();
+});
+
+
+// Add work experience to resume template (US 9, FR 9.1)
+const addWorkExperience = document.querySelector('#technical-skills-form');
+addWorkExperience.addEventListener('submit', (e) => {
+	e.preventDefault();
+	showWorkExperience();
+});
+
+
+// Add  to resume template (US 10, FR 10.1)
+const addProjectExperience = document.querySelector('#work-experience-form');
+addProjectExperience.addEventListener('submit', (e) => {
+	e.preventDefault();
+	showProjectExperience();
+});
+
+
+// Add certifications to resume template (US , FR .1)
+const addCertifications = document.querySelector('#project-experience-form');
+addCertifications.addEventListener('submit', (e) => {
+	e.preventDefault();
+	showCertifications();
+});
+
+
+// Add awards to resume template (US , FR .1)
+const addAwards = document.querySelector('#certifications-form');
+addAwards.addEventListener('submit', (e) => {
+	e.preventDefault();
+	showAwards();
+});
+
+
+// Add activities to resume template (US , FR .1)
+const addActivities = document.querySelector('#awards-form');
+addActivities.addEventListener('submit', (e) => {
+	e.preventDefault();
+	showActivities();
 });
