@@ -1,0 +1,123 @@
+.resume__header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.resume__header-contain{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-right: 5rem;
+}
+.resume__header-contain h1{
+    font-family: var(--font-family);
+    font-weight: 800;
+    font-size: 62px;
+    line-height: 75px;
+    letter-spacing: -0.04em;
+
+}
+.resume__header-contain p{
+    font-family: var(--font-family);
+    font-weight: normal;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 27px;
+    color: var(--color-text);
+    margin-top: 1.5rem;
+    justify-self: center;
+    
+
+}
+.resume__header-container_button{
+    display: flex;
+    width: 25%;
+    margin: 2rem 0 1rem;
+    justify-content: center;
+    align-items: center;
+}
+.resume__header-container_button button{
+    flex: 0.6;
+    width: 100%;
+    min-height: 50px;
+    justify-self: center;
+
+    background: #31a88a;
+    color: #fff;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: var(--font-family);
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 27px;
+    cursor: pointer;
+    outline: none;
+    padding: 0 1rem;
+}
+.resume__header-container_button button:hover{
+    background: #2f9b8a;
+}
+.resume__header-image{ 
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+   
+
+}
+.resume__header-image img{
+    width: 100%;
+    height: 100%;
+    
+}
+@media screen and (max-width: 1050px){
+    .resume__header{
+        flex-direction: column;
+    }
+    .resume__header-contain{
+       margin: 0 0 3rem;
+    }
+    .resume__header-container_button{
+        width: 100%;
+        font-size: 18px;
+        line-height: 24px;
+    }
+}
+@media screen and (max-width: 650px){
+    .resume__header h1{
+        font-size: 48px;
+        line-height: 60px;
+    }
+    .resume__header p{
+        font-size: 16px;
+        line-height: 24px;
+    }
+    .resume__header-container_button{
+        width: 100%;
+        font-size: 16px;
+        line-height: 24px;
+    }
+}
+@media screen and (max-width: 490px){
+    .resume__header h1{
+        font-size: 36px;
+        line-height: 48px;
+    }
+    .resume__header p{
+        font-size: 14px;
+        line-height: 24px;
+    }
+    .resume__header-container_button{
+        width: 100%;
+        font-size: 12px;
+        line-height: 16px;
+    }
+}
