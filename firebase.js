@@ -152,6 +152,14 @@ selectResumeTemplate.addEventListener('submit', async (e) => {
 });
 
 
+// Return to contact information screen
+const prevContactInformation = document.querySelector('#prev-contact-information');
+prevContactInformation.addEventListener('click', (e) => {
+	e.preventDefault();
+	showContactInformation();
+});
+
+
 // Add contact information to resume template (US 5, FR 5.1)
 const addContactInformation = document.querySelector("#contact-information-form");
 addContactInformation.addEventListener('submit', async (e) => {
@@ -171,6 +179,14 @@ addContactInformation.addEventListener('submit', async (e) => {
 });
 
 
+// Return to summary statement screen
+const prevSummaryStatement = document.querySelector('#prev-summary-statement');
+prevSummaryStatement.addEventListener('click', (e) => {
+	e.preventDefault();
+	showSummaryStatement();
+});
+
+
 // Add summary statement to resume template (US 6, FR 6.1)
 const addSummaryStatement = document.querySelector("#summary-statement-form");
 addSummaryStatement.addEventListener('submit', async (e) => {
@@ -180,6 +196,14 @@ addSummaryStatement.addEventListener('submit', async (e) => {
 		summaryStatement: addSummaryStatement['summary-statement'].value
 	});
 
+	showEducation();
+});
+
+
+// Return to education screen
+const prevEducation = document.querySelector('#prev-education');
+prevEducation.addEventListener('click', (e) => {
+	e.preventDefault();
 	showEducation();
 });
 
@@ -203,6 +227,14 @@ addEducation.addEventListener('submit', async (e) => {
 });
 
 
+// Return to technical skills screen
+const prevTechnicalSkills = document.querySelector('#prev-technical-skills');
+prevTechnicalSkills.addEventListener('click', (e) => {
+	e.preventDefault();
+	showTechnicalSkills();
+});
+
+
 // Add technical skills to resume template (US 8, FR 8.1)
 const addTechnicalSkills = document.querySelector('#technical-skills-form');
 addTechnicalSkills.addEventListener('submit', async (e) => {
@@ -212,6 +244,14 @@ addTechnicalSkills.addEventListener('submit', async (e) => {
 		technicalSkills: addTechnicalSkills['technical-skills'].value
 	});
 
+	showWorkExperience();
+});
+
+
+// Return to work experience screen
+const prevWorkExperience = document.querySelector('#prev-work-experience');
+prevWorkExperience.addEventListener('click', (e) => {
+	e.preventDefault();
 	showWorkExperience();
 });
 
@@ -234,7 +274,15 @@ addWorkExperience.addEventListener('submit', async (e) => {
 });
 
 
-// Add  to resume template (US 10, FR 10.1)
+// Return to project experience screen
+const prevProjectExperience = document.querySelector('#prev-project-experience');
+prevProjectExperience.addEventListener('click', (e) => {
+	e.preventDefault();
+	showProjectExperience();
+});
+
+
+// Add project experience to resume template (US 10, FR 10.1)
 const addProjectExperience = document.querySelector('#project-experience-form');
 addProjectExperience.addEventListener('submit', async (e) => {
 	e.preventDefault();
@@ -248,6 +296,14 @@ addProjectExperience.addEventListener('submit', async (e) => {
 		projectDescription: addProjectExperience['project-description'].value
 	});
 
+	showCertifications();
+});
+
+
+// Return to certifications screen
+const prevCertifications = document.querySelector('#prev-certifications');
+prevCertifications.addEventListener('click', (e) => {
+	e.preventDefault();
 	showCertifications();
 });
 
@@ -268,6 +324,14 @@ addCertifications.addEventListener('submit', async (e) => {
 });
 
 
+// Return to awards screen
+const prevAwards = document.querySelector('#prev-awards');
+prevAwards.addEventListener('click', (e) => {
+	e.preventDefault();
+	showAwards();
+});
+
+
 // Add awards to resume template (US 12, FR 12.1)
 const addAwards = document.querySelector('#awards-form');
 addAwards.addEventListener('submit', async (e) => {
@@ -282,10 +346,18 @@ addAwards.addEventListener('submit', async (e) => {
 	showActivities();
 });
 
+/*
+// Return to activities screen
+const prevActivities = document.querySelector('#prev-activities');
+prevActivities.addEventListener('click', (e) => {
+	e.preventDefault();
+	showActivities();
+});
+*/
 
 // Add activities to resume template (US 13, FR 13.1)
 const addActivities = document.querySelector("#activities-form");
-addActivities.addEventListener('click', async (e) => {
+addActivities.addEventListener('submit', async (e) => {
 	e.preventDefault();
 
 	await updateDoc(doc(db, "users", uid, "resumes", templateID), {
@@ -296,7 +368,8 @@ addActivities.addEventListener('click', async (e) => {
 		activityDescription: addActivities['activity-description'].value
 	});
 
-	showAccountDashboard(currentUser);
+	//returnToAccountDashboard();
+	//showAccountDashboard(currentUser);
 });
 
 

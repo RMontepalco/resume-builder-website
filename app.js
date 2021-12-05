@@ -4,16 +4,16 @@ const loggedIn = document.querySelectorAll('.logged-in');
 const accountEmail = document.querySelector('#account-email');
 const resumeList = document.querySelector('#resume-list');
 const resumeCreation = document.querySelectorAll('.resume-creation');
-const resumeTemplatesForm = document.querySelectorAll('#resume-templates-form');
-const contactInformationForm = document.querySelectorAll('#contact-information-form');
-const summaryStatementForm = document.querySelectorAll('#summary-statement-form');
-const educationForm = document.querySelectorAll('#education-form');
-const technicalSkillsForm = document.querySelectorAll('#technical-skills-form');
-const workExperienceForm = document.querySelectorAll('#work-experience-form');
-const projectExperienceForm = document.querySelectorAll('#project-experience-form');
-const certificationsForm = document.querySelectorAll('#certifications-form');
-const awardsForm = document.querySelectorAll('#awards-form');
-const activitiesForm = document.querySelectorAll('#activities-form');
+const resumeTemplatesScreen = document.querySelectorAll('#resume-templates-screen');
+const contactInformationScreen = document.querySelectorAll('#contact-information-screen');
+const summaryStatementScreen = document.querySelectorAll('#summary-statement-screen');
+const educationScreen = document.querySelectorAll('#education-screen');
+const technicalSkillsScreen = document.querySelectorAll('#technical-skills-screen');
+const workExperienceScreen = document.querySelectorAll('#work-experience-screen');
+const projectExperienceScreen = document.querySelectorAll('#project-experience-screen');
+const certificationsScreen = document.querySelectorAll('#certifications-screen');
+const awardsScreen = document.querySelectorAll('#awards-screen');
+const activitiesScreen = document.querySelectorAll('#activities-screen');
 let html = '';
 
 
@@ -66,77 +66,82 @@ const hideResumes = () => {
 const showResumeTemplates = () => {
   loggedIn.forEach(item => item.style.display = 'none');
   resumeCreation.forEach(item => item.style.display = 'block');
-  resumeTemplatesForm.forEach(item => item.style.display = 'block');
-  contactInformationForm.forEach(item => item.style.display = 'none');
+  resumeTemplatesScreen.forEach(item => item.style.display = 'block');
+  contactInformationScreen.forEach(item => item.style.display = 'none');
 }
 
 
 // Display contact information screen
 const showContactInformation = () => {
-  resumeTemplatesForm.forEach(item => item.style.display = 'none');
-  contactInformationForm.forEach(item => item.style.display = 'block');
-  summaryStatementForm.forEach(item => item.style.display = 'none');
+  resumeTemplatesScreen.forEach(item => item.style.display = 'none');
+  contactInformationScreen.forEach(item => item.style.display = 'block');
+  summaryStatementScreen.forEach(item => item.style.display = 'none');
 };
 
 
 //Display summary statement screen
 const showSummaryStatement = () => {
-  contactInformationForm.forEach(item => item.style.display = 'none');
-  summaryStatementForm.forEach(item => item.style.display = 'block');
-  educationForm.forEach(item => item.style.display = 'none');
+  contactInformationScreen.forEach(item => item.style.display = 'none');
+  summaryStatementScreen.forEach(item => item.style.display = 'block');
+  educationScreen.forEach(item => item.style.display = 'none');
 };
 
 
 // Display education screen
 const showEducation = () => {
-  summaryStatementForm.forEach(item => item.style.display = 'none');
-  educationForm.forEach(item => item.style.display = 'block');
-  technicalSkillsForm.forEach(item => item.style.display = 'none');
+  summaryStatementScreen.forEach(item => item.style.display = 'none');
+  educationScreen.forEach(item => item.style.display = 'block');
+  technicalSkillsScreen.forEach(item => item.style.display = 'none');
 };
 
 
 // Display technical skills screen
 const showTechnicalSkills = () => {
-  educationForm.forEach(item => item.style.display = 'none');
-  technicalSkillsForm.forEach(item => item.style.display = 'block');
-  workExperienceForm.forEach(item => item.style.display = 'none');
+  educationScreen.forEach(item => item.style.display = 'none');
+  technicalSkillsScreen.forEach(item => item.style.display = 'block');
+  workExperienceScreen.forEach(item => item.style.display = 'none');
 };
 
 
 // Display work experience screen
 const showWorkExperience = () => {
-  technicalSkillsForm.forEach(item => item.style.display = 'none');
-  workExperienceForm.forEach(item => item.style.display = 'block');
-  projectExperienceForm.forEach(item => item.style.display = 'none');
+  technicalSkillsScreen.forEach(item => item.style.display = 'none');
+  workExperienceScreen.forEach(item => item.style.display = 'block');
+  projectExperienceScreen.forEach(item => item.style.display = 'none');
 };
 
 
 // Display project experience screen
 const showProjectExperience = () => {
-  workExperienceForm.forEach(item => item.style.display = 'none');
-  projectExperienceForm.forEach(item => item.style.display = 'block');
-  certificationsForm.forEach(item => item.style.display = 'none');
+  workExperienceScreen.forEach(item => item.style.display = 'none');
+  projectExperienceScreen.forEach(item => item.style.display = 'block');
+  certificationsScreen.forEach(item => item.style.display = 'none');
 };
 
 
 // Display certifications screen
 const showCertifications = () => {
-  projectExperienceForm.forEach(item => item.style.display = 'none');
-  certificationsForm.forEach(item => item.style.display = 'block');
-  awardsForm.forEach(item => item.style.display = 'none');
+  projectExperienceScreen.forEach(item => item.style.display = 'none');
+  certificationsScreen.forEach(item => item.style.display = 'block');
+  awardsScreen.forEach(item => item.style.display = 'none');
 };
 
 
 // Display awards screen
 const showAwards = () => {
-  certificationsForm.forEach(item => item.style.display = 'none');
-  awardsForm.forEach(item => item.style.display = 'block');
-  activitiesForm.forEach(item => item.style.display = 'none');
+  certificationsScreen.forEach(item => item.style.display = 'none');
+  awardsScreen.forEach(item => item.style.display = 'block');
+  activitiesScreen.forEach(item => item.style.display = 'none');
 };
 
 
 // Display activities screen
 const showActivities = () => {
-  awardsForm.forEach(item => item.style.display = 'none');
-  activitiesForm.forEach(item => item.style.display = 'block');
+  awardsScreen.forEach(item => item.style.display = 'none');
+  activitiesScreen.forEach(item => item.style.display = 'block');
 };
+
+// Return to account dashboard screen (WIP)
+const returnToAccountDashboard = () => {
+  activitiesScreen.forEach(item => item.style.display = 'none');
+}
