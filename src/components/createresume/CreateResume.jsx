@@ -6,6 +6,7 @@ const CreateResume = () => {
         <div>
             <h1>Create Resume</h1>
             <div className="resume-creation">
+                <h2>Create A New Resume</h2>
 
                 <div id="resume-templates-screen">
                     <form id="resume-templates-form">
