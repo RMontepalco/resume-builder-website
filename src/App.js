@@ -8,6 +8,7 @@ import Login from './components/login/Login';
 import SignUp from './components/signup/SignUp';
 import Dashboard from './components/dashboard/Dashboard';
 import CreateResume from './components/createresume/CreateResume';
+import Firebase from './firebase.js';
 import './App.css';
 
 const App = () => {
