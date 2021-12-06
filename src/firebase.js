@@ -30,6 +30,7 @@ var uid;
 var templateID;
 
 
+
 // Authentication State Observer and User Data
 // Track whether a user is logged in or logged out, 
 // and show certain web elements depending on the status
@@ -41,13 +42,13 @@ onAuthStateChanged(auth, async (user) => {
         uid = user.uid;
         // showAccountDashboard(user);
         // html = '';
-        console.log('User logged in: ', user);
+        console.log('User logged in: ', user.email);
 
         // Retrive user's resumes from the database (WIP)
         const querySnapshot = await getDocs(collection(db, "users", uid, "resumes"));
         let i = 0;
         querySnapshot.forEach((doc) => {
-            console.log(doc.id, " => ", doc.data());
+            //console.log(doc.id, " => ", doc.data());
             // displayResumes(doc);
             i++;
         });
@@ -63,6 +64,8 @@ onAuthStateChanged(auth, async (user) => {
         // hideResumes();
     }
 });
+
+
 /*
 
 // Create an Account (US 1, FR 1.1-1.4)
@@ -369,4 +372,4 @@ addActivities.addEventListener('submit', async (e) => {
 // Store resume into the database (US 14, FR 14.1) (WIP)
 
 
-export default app;
+export {app, auth, db}
