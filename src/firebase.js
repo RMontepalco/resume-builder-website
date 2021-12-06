@@ -372,4 +372,4 @@ addActivities.addEventListener('submit', async (e) => {
 // Store resume into the database (US 14, FR 14.1) (WIP)
 
 
-export {app, auth, db}
+export {app, auth, db, templateID}

@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import { auth, db } from '../../firebase';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
-import { getFirestore, collection, doc, getDoc, getDocs, setDoc, addDoc, updateDoc } from "firebase/firestore";
-import { getAnalytics } from "firebase/analytics";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    // Log In to Account (US 2, FR 2.1-2.3)
     const loginUser = async (e) => {
-        e.preventDefault();
         try {
+            e.preventDefault();
             const user = await signInWithEmailAndPassword(auth, email, password);
             //console.log(user);
         } catch (error) {
@@ -19,23 +18,18 @@ const Login = () => {
         
     }
 
-
     return (
         <div>
             <h1>Log In</h1>
-            <div className="logged-out">
-                <form id="login-form" onSubmit={loginUser}>
-                    <input type="email" id="login-email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Email Address"/>
-                    <input type="password" id="login-password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Password"/>
-                    <button>Log In</button>
-                </form>
-            </div>
+            <form onSubmit={loginUser}>
+                <input type="email" value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Email Address"/>
+                <input type="password" value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Password"/>
+                <button>Log In</button>
+            </form>
         </div>
     )
 }

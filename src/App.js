@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 //import {Header} from './containers';
-import {Home, Login, SignUp, Dashboard, CreateResume} from './components';
+import { Home, Login, SignUp, Dashboard, CreateResume, Templates, ContactInformation, SummaryStatement } from './components';
 import './App.css';
 
 const App = () => {
@@ -14,7 +14,9 @@ const App = () => {
                 <Login/>
                 <SignUp/>
                 <Dashboard/>
-                <CreateResume/>
+                <Templates/>
+                <ContactInformation/>
+                <SummaryStatement/>
             </div>
         </div>
     )
