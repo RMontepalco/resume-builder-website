@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { auth, db } from '../../firebase';
 import { collection, addDoc } from "firebase/firestore";
 
-const Templates = () => {
-    const [templateID, setTemplateID] = useState("");
+var templateID;
 
+const Templates = () => {
     // Select a resume template (US 4, FR 4.1)
     const createTemplate = async (e) => {
         try {
@@ -12,12 +12,12 @@ const Templates = () => {
             const template = await addDoc(collection(db, "users", auth.currentUser.uid, "resumes"), {
                 resumeName: "Resume"
             });
-            setTemplateID(template.id);
+            
+            templateID = template.id;
             console.log("Resume template created.");
         } catch (error) {
             console.log(error);
         }
-        
     }
 
     return (
@@ -30,4 +30,4 @@ const Templates = () => {
     )
 }
 
-export default Templates
+export { Templates, templateID }

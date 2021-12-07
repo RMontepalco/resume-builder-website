@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { auth, db } from '../../firebase';
 import {doc, updateDoc } from "firebase/firestore";
+import { templateID } from '../templates/Templates';
 
 const WorkExperience = () => {
     const [workPosition, setWorkPosition] = useState("");
@@ -15,7 +16,7 @@ const WorkExperience = () => {
     const addWorkExperience = async (e) => {
         try {
             e.preventDefault();
-            await updateDoc(doc(db, "users", auth.currentUser.uid, "resumes", "test"), {
+            await updateDoc(doc(db, "users", auth.currentUser.uid, "resumes", templateID), {
                 workPosition: workPosition,
                 workCompanyName: workCompanyName,
                 workCity: workCity,

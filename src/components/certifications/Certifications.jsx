@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { auth, db } from '../../firebase';
 import {doc, updateDoc } from "firebase/firestore";
+import { templateID } from '../templates/Templates';
 
 const Certifications = () => {
     const [certificationName, setCertificationName] = useState("");
@@ -12,7 +13,7 @@ const Certifications = () => {
     const addCertifications = async (e) => {
         try {
             e.preventDefault();
-            await updateDoc(doc(db, "users", auth.currentUser.uid, "resumes", "test"), {
+            await updateDoc(doc(db, "users", auth.currentUser.uid, "resumes", templateID), {
                 certificationName: certificationName,
                 certificationOrganization: certificationOrganization,
                 certificationIssuedDate: certificationIssuedDate,

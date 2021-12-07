@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { auth, db } from '../../firebase';
 import {doc, updateDoc } from "firebase/firestore";
+import { templateID } from '../templates/Templates';
 
 const Education = () => {
     const [schoolName, setSchoolName] = useState("");
@@ -15,7 +16,7 @@ const Education = () => {
     const addEducation = async (e) => {
         try {
             e.preventDefault();
-            await updateDoc(doc(db, "users", auth.currentUser.uid, "resumes", "test"), {
+            await updateDoc(doc(db, "users", auth.currentUser.uid, "resumes", templateID), {
                 schoolName: schoolName,
                 degreeLevel: degreeLevel,
                 major: major,

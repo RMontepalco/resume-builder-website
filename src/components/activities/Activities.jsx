@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { auth, db } from '../../firebase';
 import {doc, updateDoc } from "firebase/firestore";
+import { templateID } from '../templates/Templates';
 
 const Activities = () => {
     const [activityRole, setActivityRole] = useState("");
@@ -13,7 +14,7 @@ const Activities = () => {
     const addActivities = async (e) => {
         try {
             e.preventDefault();
-            await updateDoc(doc(db, "users", auth.currentUser.uid, "resumes", "test"), {
+            await updateDoc(doc(db, "users", auth.currentUser.uid, "resumes", templateID), {
                 activityRole: activityRole,
                 activityName: activityName,
                 activityStartDate: activityStartDate,

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { auth, db } from '../../firebase';
 import {doc, updateDoc } from "firebase/firestore";
+import { templateID } from '../templates/Templates';
 
 const TechnicalSkills = () => {
     const [technicalSkills, setTechnicalSkills] = useState("");
@@ -9,7 +10,7 @@ const TechnicalSkills = () => {
     const addTechnicalSkills = async (e) => {
         try {
             e.preventDefault();
-            await updateDoc(doc(db, "users", auth.currentUser.uid, "resumes", "test"), {
+            await updateDoc(doc(db, "users", auth.currentUser.uid, "resumes", templateID), {
                 technicalSkills: technicalSkills
             });
             console.log("Technical skills added to resume template.");

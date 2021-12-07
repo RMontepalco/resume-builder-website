@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { auth, db } from '../../firebase';
 import {doc, updateDoc } from "firebase/firestore";
+import { templateID } from '../templates/Templates';
 
 const ProjectExperience = () => {
     const [projectName, setProjectName] = useState("");
@@ -15,7 +16,7 @@ const ProjectExperience = () => {
     const addProjectExperience = async (e) => {
         try {
             e.preventDefault();
-            await updateDoc(doc(db, "users", auth.currentUser.uid, "resumes", "test"), {
+            await updateDoc(doc(db, "users", auth.currentUser.uid, "resumes", templateID), {
                 projectName: projectName,
                 projectCompanyName: projectCompanyName,
                 projectCity: projectCity,

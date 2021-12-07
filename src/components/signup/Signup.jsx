@@ -44,7 +44,7 @@ const SignUp = () => {
                             <Form.Label>Password Confirm</Form.Label>
                             <Form.Control type="email" ref={passwordConfirmRef} required/>
                         </Form.Group>
-                        <Button classname="w-100" type="submit">Sign Up</Button>
+                        <Button className="w-100" type="submit">Sign Up</Button>
                     </Form>
                 </Card.Body>
             </Card>

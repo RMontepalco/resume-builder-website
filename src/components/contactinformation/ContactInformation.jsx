@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { auth, db } from '../../firebase';
 import { doc, updateDoc } from "firebase/firestore";
+import { templateID } from '../templates/Templates';
 
 const ContactInformation = () => {
     const [firstName, setFirstName] = useState("");
@@ -16,7 +17,7 @@ const ContactInformation = () => {
     const addContactInformation = async (e) => {
         try {
             e.preventDefault();
-            await updateDoc(doc(db, "users", auth.currentUser.uid, "resumes", "test"), {
+            await updateDoc(doc(db, "users", auth.currentUser.uid, "resumes", templateID), {
                 firstName: firstName,
                 lastName: lastName,
                 city: city,
