@@ -2,7 +2,10 @@ import React, { useState, useRef  } from 'react';
 import { auth, db } from '../../firebase';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
-import { Card, Button, Form } from 'react-bootstrap';
+import { Card, Button, Form, Alert } from 'react-bootstrap';
+import { Link, useNavigate  } from "react-router-dom"
+import { useAuth } from "../../contexts/AuthContext"
+import Navbar from '../../components/navbar/Navbar';
 
 const SignUp = () => {
     // const [email, setEmail] = useState("");
@@ -25,12 +28,35 @@ const SignUp = () => {
     const emailRef = useRef();
     const passwordRef = useRef();
     const passwordConfirmRef = useRef();
-
+    const { SignUp } = useAuth()
+    const [error, setError] = useState("")
+    const [loading, setLoading] = useState(false)
+    const history = useNavigate ()
+    async function handleSubmit(e) {
+        e.preventDefault()
+    
+        if (passwordRef.current.value !== passwordConfirmRef.current.value) {
+          return setError("Passwords do not match")
+        }
+    
+        try {
+          setError("")
+          setLoading(true)
+          await SignUp(emailRef.current.value, passwordRef.current.value)
+          history.push("/home")
+        } catch {
+          setError("Failed to create an account")
+        }
+    
+        setLoading(false)
+      }
     return (
         <>
+        <Navbar/>
             <Card>
                 <Card.Body>
                     <h2 className="text-center mb-4">Sign Up</h2>
+                    {error && <Alert variant="danger">{error}</Alert>}
                     <Form>
                         <Form.Group id="email">
                             <Form.Label>Email</Form.Label>
@@ -42,14 +68,14 @@ const SignUp = () => {
                         </Form.Group>
                         <Form.Group id="password-confirm">
                             <Form.Label>Password Confirm</Form.Label>
-                            <Form.Control type="email" ref={passwordConfirmRef} required/>
+                            <Form.Control type="password" ref={passwordConfirmRef} required/>
                         </Form.Group>
-                        <Button className="w-100" type="submit">Sign Up</Button>
+                        <Button disabled={loading} classname="w-100" type="submit">Sign Up</Button>
                     </Form>
                 </Card.Body>
             </Card>
             <div className="w-100 text-center mt-2">
-                Already have an account? Log in
+                Already have an account? <Link to="/login">Log In</Link>
             </div>
         </>
     )

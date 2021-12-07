@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { auth, db } from '../../firebase';
 import { signInWithEmailAndPassword } from "firebase/auth";
-
+import Navbar from '../../components/navbar/Navbar';
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -20,6 +20,7 @@ const Login = () => {
 
     return (
         <div>
+            <Navbar />
             <h1>Log In</h1>
             <form onSubmit={loginUser}>
                 <input type="email" value={email}

@@ -2,11 +2,12 @@ import React, {useState}  from 'react';
 import { RiMenu3Line, RiCloseLine } from 'react-icons/ri';
 import logo from '../../assets/logo.png';
 import './navbar.css';
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom"
+
 const Menu = () => (
     <>
-     <p><a href="#login">Login</a></p>
-     <p><a href="#signup">Sign Up</a></p>
+     <p><a href="/login" style={{ textDecoration: 'none', color: 'unset'}}>Login</a></p>
+     <p><a href="/signup"style={{ textDecoration: 'none', color: 'unset'}}>Sign Up</a></p>
     </>
 )
 const Navbar = () => {
@@ -15,7 +16,8 @@ const Navbar = () => {
         <div className="resume__navbar">
             <div className="resume__navbar-links">
                 <div className="resume__navbar-links_logo">
-                    <img src={logo} alt="logo" />
+                    
+                    <Link to="/home"><img src={logo} alt="logo" /></Link>
                 </div>
                 <div className="resume__navbar-links_container">
                     <Menu />
