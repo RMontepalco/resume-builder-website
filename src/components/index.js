@@ -6,3 +6,6 @@ export { default as CreateResume } from './createresume/CreateResume';
 export { default as Templates } from './templates/Templates';
 export { default as ContactInformation } from './contactinformation/ContactInformation';
 export { default as SummaryStatement } from './summarystatement/SummaryStatement';
+export { default as Education } from './education/Education';
+export { default as TechnicalSkills } from './technicalskills/TechnicalSkills';
+export { default as WorkExperience } from './workexperience/WorkExperience';

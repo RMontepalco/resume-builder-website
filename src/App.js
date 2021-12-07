@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 //import {Header} from './containers';
-import { Home, Login, SignUp, Dashboard, CreateResume, Templates, ContactInformation, SummaryStatement } from './components';
+import { Home, Login, SignUp, Dashboard, CreateResume, Templates, ContactInformation, SummaryStatement, Education, TechnicalSkills, WorkExperience } from './components';
 import './App.css';
 
 const App = () => {
@@ -17,6 +17,9 @@ const App = () => {
                 <Templates/>
                 <ContactInformation/>
                 <SummaryStatement/>
+                <Education/>
+                <TechnicalSkills/>
+                <WorkExperience/>
             </div>
         </div>
     )

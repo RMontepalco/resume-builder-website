@@ -13,9 +13,9 @@ const Templates = () => {
                 resumeName: "Resume"
             });
             setTemplateID(template.id);
-            console.log(templateID);
+            console.log("Resume template created.");
         } catch (error) {
-            //console.log(error);
+            console.log(error);
         }
         
     }

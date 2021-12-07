@@ -25,8 +25,9 @@ const ContactInformation = () => {
                 phoneNumber: phoneNumber,
                 emailAddress: email
             });
+            console.log("Contact information added to resume template.");
         } catch (error) {
-            //console.log(error);
+            console.log(error);
         }
         
     }

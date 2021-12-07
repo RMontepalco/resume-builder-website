@@ -12,8 +12,9 @@ const SummaryStatement = () => {
             await updateDoc(doc(db, "users", auth.currentUser.uid, "resumes", "test"), {
                 summaryStatement: summaryStatement
             });
+            console.log("Summary statement added to resume template.");
         } catch (error) {
-            //console.log(error);
+            console.log(error);
         }
         
     }
