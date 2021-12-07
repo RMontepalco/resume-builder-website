@@ -6,11 +6,12 @@ const WorkExperience = () => {
     const [workPosition, setWorkPosition] = useState("");
     const [workCompanyName, setWorkCompanyName] = useState("");
     const [workCity, setWorkCity] = useState("");
+    const [workState, setWorkState] = useState("");
     const [workStartDate, setWorkStartDate] = useState("");
     const [workEndDate, setWorkEndDate] = useState("");
     const [workDescription, setWorkDescription] = useState("");
 
-    // Add education to resume template (US 7, FR 7.1)
+    // Add work experience to resume template (US 9, FR 9.1)
     const addWorkExperience = async (e) => {
         try {
             e.preventDefault();
@@ -18,11 +19,12 @@ const WorkExperience = () => {
                 workPosition: workPosition,
                 workCompanyName: workCompanyName,
                 workCity: workCity,
+                workState: workState,
                 workStartDate: workStartDate,
                 workEndDate: workEndDate,
                 workDescription: workDescription
             });
-            console.log("Education added to resume template.");
+            console.log("Work experience added to resume template.");
         } catch (error) {
             console.log(error);
         }
@@ -42,6 +44,10 @@ const WorkExperience = () => {
                 <input type="text" value={workCity}
                 onChange={(e) => setWorkCity(e.target.value)}
                 placeholder="City"/>
+                <input type="text" value={workState}
+                onChange={(e) => setWorkState(e.target.value)}
+                maxLength="2" 
+                placeholder="State"/>
                 <input type="month" value={workStartDate}
                 onChange={(e) => setWorkStartDate(e.target.value)}
                 placeholder="Start Date"/>
@@ -53,7 +59,7 @@ const WorkExperience = () => {
                 placeholder="Description"/>
                 <button>Next: Project Experience</button>
             </form>
-            <button id="prev-technical-skills">Previous: Technical Skills</button>
+            <button>Previous: Technical Skills</button>
         </div>
     )
 }

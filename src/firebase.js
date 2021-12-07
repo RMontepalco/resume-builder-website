@@ -27,7 +27,7 @@ const db = getFirestore(app);
 const analytics = getAnalytics(app);
 var currentUser;
 var uid;
-var templateID;
+var templateID = 69;
 
 
 
@@ -42,24 +42,24 @@ onAuthStateChanged(auth, async (user) => {
         uid = user.uid;
         // showAccountDashboard(user);
         // html = '';
-        console.log('User logged in: ', user.email);
+        console.log('Logged in as', user.email);
 
         // Retrive user's resumes from the database (WIP)
-        const querySnapshot = await getDocs(collection(db, "users", uid, "resumes"));
-        let i = 0;
-        querySnapshot.forEach((doc) => {
+        //const querySnapshot = await getDocs(collection(db, "users", uid, "resumes"));
+        //let i = 0;
+        //querySnapshot.forEach((doc) => {
             //console.log(doc.id, " => ", doc.data());
             // displayResumes(doc);
-            i++;
-        });
+            //i++;
+        //});
 
         // User has no resumes in the database
-        if (i == 0) {
+        //if (i == 0) {
             // resumeList.innerHTML = '<h4> You have no resumes. </h4>'
-        };
+        //};
     } else {
         // User is logged out
-        console.log('User logged out');
+        console.log('Logged out');
         // showAccountDashboard(user);
         // hideResumes();
     }

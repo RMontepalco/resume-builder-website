@@ -9,3 +9,7 @@ export { default as SummaryStatement } from './summarystatement/SummaryStatement
 export { default as Education } from './education/Education';
 export { default as TechnicalSkills } from './technicalskills/TechnicalSkills';
 export { default as WorkExperience } from './workexperience/WorkExperience';
+export { default as ProjectExperience } from './projectexperience/ProjectExperience';
+export { default as Certifications } from './certifications/Certifications';
+export { default as Awards } from './awards/Awards';
+export { default as Activities } from './activities/Activities';
