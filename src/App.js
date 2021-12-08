@@ -9,7 +9,7 @@ import { Home, Login, SignUp, Dashboard, CreateResume,
     TechnicalSkills, WorkExperience, ProjectExperience,
     Certifications, Awards, Activities } from './components';
 import './App.css';
-
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 function App() {
     return (
         <div className="App">

@@ -4,28 +4,52 @@ import { auth, db } from '../../firebase';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
 import { getFirestore, collection, doc, getDoc, getDocs, setDoc, addDoc, updateDoc } from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
-
+import { useAuth } from "../../contexts/AuthContext"
+import { Card, Button, Alert } from "react-bootstrap"
+import { Link, useNavigate } from "react-router-dom"
 const Dashboard = () => {
-    const [user, setUser] = useState({});
+    // const [user, setUser] = useState({});
 
-    // Display current user's email address
-    onAuthStateChanged(auth, (currentUser) => {
-        setUser(currentUser);
-    });
+    // // Display current user's email address
+    // onAuthStateChanged(auth, (currentUser) => {
+    //     setUser(currentUser);
+    // });
 
-    // Log Out of Account (US 3, FR 3.1-3.3)
-    const logoutUser = async (e)=> {
-        signOut(auth);
+    // // Log Out of Account (US 3, FR 3.1-3.3)
+    // const logoutUser = async (e)=> {
+    //     signOut(auth);
+    // }
+    const [error, setError] = useState("")
+    const { currentUser, logout } = useAuth()
+    const history = useNavigate()
+    async function handleLogout() {
+        setError("")
+    
+        try {
+          await logout()
+          history.push("/login")
+        } catch {
+          setError("Failed to log out")
+        }
     }
-
     return (
-        <div>
-            <h1>Dashboard</h1>
-            <h3>Logged in as: {user?.email}</h3>
-            <ul id="resume-list"></ul>
-            <button>Create Resume</button>
-            <button onClick={logoutUser}>Log Out</button>
-        </div>
+        <>
+      <Card>
+        <Card.Body>
+          <h2 className="text-center mb-4">Profile</h2>
+          {error && <Alert variant="danger">{error}</Alert>}
+          <strong>Email:</strong> {currentUser.email}
+          <Link to="/update-profile" className="btn btn-primary w-100 mt-3">
+            Update Profile
+          </Link>
+        </Card.Body>
+      </Card>
+      <div className="w-100 text-center mt-2">
+        <Button variant="link" onClick={handleLogout}>
+          Log Out
+        </Button>
+      </div>
+    </>
     )
 }
 
