@@ -43,7 +43,7 @@ const SignUp = () => {
           setError("")
           setLoading(true)
           await signup(emailRef.current.value, passwordRef.current.value)
-          history.push("/")
+          history("/login", { replace: true })
         } catch {
           setError("Failed to create an account")
         }
@@ -57,7 +57,7 @@ const SignUp = () => {
                 <Card.Body>
                     <h2 className="text-center mb-4">Sign Up</h2>
                     {error && <Alert variant="danger">{error}</Alert>}
-                    <Form>
+                    <Form onSubmit={handleSubmit}>
                         <Form.Group id="email">
                             <Form.Label>Email</Form.Label>
                             <Form.Control type="email" ref={emailRef} required/>

@@ -3,7 +3,7 @@ import { auth, db } from '../../firebase';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import Navbar from '../../components/navbar/Navbar';
 import { Card, Button, Form, Alert } from 'react-bootstrap';
-import { Link, useNavigate  } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useAuth } from "../../contexts/AuthContext"
 const Login = () => {
     // const [email, setEmail] = useState("");
@@ -35,7 +35,7 @@ const Login = () => {
           setError("")
           setLoading(true)
           await login(emailRef.current.value, passwordRef.current.value)
-          history.push("/dashboard")
+          history("/dashboard", { replace: true })
         } catch {
           setError("Failed to Log In")
         }
@@ -49,7 +49,7 @@ const Login = () => {
                 <Card.Body>
                     <h2 className="text-center mb-4">Log In</h2>
                     {error && <Alert variant="danger">{error}</Alert>}
-                    <Form>
+                    <Form onSubmit={handleSubmit}>
                         <Form.Group id="email">
                             <Form.Label>Email</Form.Label>
                             <Form.Control type="email" ref={emailRef} required/>
