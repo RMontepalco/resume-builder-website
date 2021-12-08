@@ -1,6 +1,6 @@
 import React, { useEffect, useState, Fragment } from 'react';
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 //import {Header} from './containers';
 import { Home, Login, SignUp, Dashboard, CreateResume,
@@ -15,16 +15,14 @@ function App() {
         <div className="App">
             <div>
 
-                <Router>
-                    <Fragment>
-                        <Routes>
-                            <Route exact path="/resume-builder-website/home" element={<Home />}/>
-                            <Route path="/resume-builder-website/login" element={<Login />} />
-                            <Route path="/resume-builder-website/signup" element={<SignUp />} />
-                            <Route path="/resume-builder-website/dashboard" element={<Dashboard />} />
-                            <Route path="/resume-builder-website/createresume" element={<CreateResume />} />
-                        </Routes>
-                    </Fragment>
+                <Router basename="/">
+                    <Routes>
+                        <Route exact path="/" element={<Home />}/>
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/signup" element={<SignUp />} />
+                        <Route path="/dashboard" element={<Dashboard />} />
+                        <Route path="/createresume" element={<CreateResume />} />
+                    </Routes>
                 </Router>
 
             </div>

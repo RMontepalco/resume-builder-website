@@ -6,8 +6,8 @@ import { Link } from "react-router-dom"
 
 const Menu = () => (
     <>
-     <p><a href="/login" style={{ textDecoration: 'none', color: 'unset'}}>Login</a></p>
-     <p><a href="/signup"style={{ textDecoration: 'none', color: 'unset'}}>Sign Up</a></p>
+     <p><a href="#/login" style={{ textDecoration: 'none', color: 'unset'}}>Login</a></p>
+     <p><a href="#/signup"style={{ textDecoration: 'none', color: 'unset'}}>Sign Up</a></p>
     </>
 )
 const Navbar = () => {
@@ -17,7 +17,7 @@ const Navbar = () => {
             <div className="resume__navbar-links">
                 <div className="resume__navbar-links_logo">
                     
-                    <Link to="/home"><img src={logo} alt="logo" /></Link>
+                    <Link to="/"><img src={logo} alt="logo" /></Link>
                 </div>
                 <div className="resume__navbar-links_container">
                     <Menu />
