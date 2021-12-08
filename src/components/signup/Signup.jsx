@@ -40,12 +40,16 @@ const SignUp = () => {
         }
     
         try {
-          setError("")
-          setLoading(true)
-          await signup(emailRef.current.value, passwordRef.current.value)
-          history("/login", { replace: true })
+            setError("")
+            setLoading(true)
+            // await signup(emailRef.current.value, passwordRef.current.value)
+            await createUserWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value);
+            await setDoc(doc(db, "users", auth.currentUser.uid), {
+                email: auth.currentUser.email
+            })
+            history("/login", { replace: true })
         } catch {
-          setError("Failed to create an account")
+            setError("Failed to create an account")
         }
     
         setLoading(false)
@@ -70,7 +74,7 @@ const SignUp = () => {
                             <Form.Label>Password Confirm</Form.Label>
                             <Form.Control type="password" ref={passwordConfirmRef} required/>
                         </Form.Group>
-                        <Button disabled={loading} classname="w-100" type="submit">Sign Up</Button>
+                        <Button disabled={loading} className="w-100" type="submit">Sign Up</Button>
                     </Form>
                 </Card.Body>
             </Card>

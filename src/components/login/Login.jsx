@@ -34,7 +34,8 @@ const Login = () => {
         try {
           setError("")
           setLoading(true)
-          await login(emailRef.current.value, passwordRef.current.value)
+          // await login(emailRef.current.value, passwordRef.current.value)
+          await signInWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value)
           history("/dashboard", { replace: true })
         } catch {
           setError("Failed to Log In")
@@ -58,7 +59,7 @@ const Login = () => {
                             <Form.Label>Password</Form.Label>
                             <Form.Control type="password" ref={passwordRef} required/>
                         </Form.Group>
-                        <Button disabled={loading} classname="w-100" type="submit">Log In</Button>
+                        <Button disabled={loading} className="w-100" type="submit">Log In</Button>
                     </Form>
                 </Card.Body>
             </Card>
