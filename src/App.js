@@ -18,11 +18,11 @@ function App() {
                 <Router>
                     <Fragment>
                         <Routes>
-                            <Route exact path="resume-builder-website/home" element={<Home />}/>
-                            <Route path="resume-builder-website/login" element={<Login />} />
-                            <Route path="resume-builder-website/signup" element={<SignUp />} />
-                            <Route path="resume-builder-website/dashboard" element={<Dashboard />} />
-                            <Route path="resume-builder-website/createresume" element={<CreateResume />} />
+                            <Route exact path="/home" element={<Home />}/>
+                            <Route path="/login" element={<Login />} />
+                            <Route path="/signup" element={<SignUp />} />
+                            <Route path="/dashboard" element={<Dashboard />} />
+                            <Route path="/createresume" element={<CreateResume />} />
                         </Routes>
                     </Fragment>
                 </Router>
