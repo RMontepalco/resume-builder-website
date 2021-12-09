@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Navbar from '../../components/navbar/Navbar';
+import Navbar_Dashboard from '../navbar_dashboard/Navbar_Dashboard';
 import { auth, db } from '../../firebase';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
 import { getFirestore, collection, doc, getDoc, getDocs, setDoc, addDoc, updateDoc } from "firebase/firestore";
@@ -7,6 +7,7 @@ import { getAnalytics } from "firebase/analytics";
 import { useAuth } from "../../contexts/AuthContext"
 import { Card, Button, Alert } from "react-bootstrap"
 import { Link, useNavigate } from "react-router-dom"
+
 const Dashboard = () => {
     // const [user, setUser] = useState({});
 
@@ -26,27 +27,28 @@ const Dashboard = () => {
         setError("")
     
         try {
-          // await logout()
+          //await logout()
           signOut(auth);
-          history.push("/login")
+          history("/", { replace: true })
         } catch {
           setError("Failed to log out")
         }
     }
     return (
-        <>
-      <Card>
-        <Card.Body>
-          <h2 className="text-center mb-4">Profile</h2>
-          {error && <Alert variant="danger">{error}</Alert>}
-          <strong>Email:</strong> {currentUser?.email}
-        </Card.Body>
-      </Card>
-      <div className="w-100 text-center mt-2">
-        <Button variant="link" onClick={handleLogout}>
-          Log Out
-        </Button>
-      </div>
+      <>
+        <Navbar_Dashboard />
+        <Card>
+          <Card.Body>
+            <h2 className="text-center mb-4">Profile</h2>
+            {error && <Alert variant="danger">{error}</Alert>}
+            <strong>Email:</strong> {currentUser?.email}
+          </Card.Body>
+        </Card>
+        <div className="w-100 text-center mt-2">
+          <Button variant="link" onClick={handleLogout}>
+            Log Out
+          </Button>
+        </div>
     </>
     )
 }

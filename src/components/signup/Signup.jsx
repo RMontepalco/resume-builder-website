@@ -6,7 +6,7 @@ import { Card, Button, Form, Alert } from 'react-bootstrap';
 import { Link, useNavigate  } from "react-router-dom"
 import { useAuth } from "../../contexts/AuthContext"
 import Navbar from '../../components/navbar/Navbar';
-
+import './signup.css';
 const SignUp = () => {
     // const [email, setEmail] = useState("");
     // const [password, setPassword] = useState("");
@@ -57,7 +57,8 @@ const SignUp = () => {
     return (
         <>
         <Navbar/>
-            <Card>
+        <div className="signup">
+            <Card className="signup__card">
                 <Card.Body>
                     <h2 className="text-center mb-4">Sign Up</h2>
                     {error && <Alert variant="danger">{error}</Alert>}
@@ -74,13 +75,16 @@ const SignUp = () => {
                             <Form.Label>Password Confirm</Form.Label>
                             <Form.Control type="password" ref={passwordConfirmRef} required/>
                         </Form.Group>
-                        <Button disabled={loading} className="w-100" type="submit">Sign Up</Button>
+                        <Button disabled={loading} className="w-100 mt-4" type="submit">Sign Up</Button>
                     </Form>
+                    <div className="w-100 text-center mt-2">
+                        Already have an account? <Link to="/login" className="text-decoration-none">Log In</Link>
+                    </div>
                 </Card.Body>
+             
             </Card>
-            <div className="w-100 text-center mt-2">
-                Already have an account? <Link to="/login">Log In</Link>
-            </div>
+
+        </div>
         </>
     )
 }
