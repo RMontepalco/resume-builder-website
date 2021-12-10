@@ -25,8 +25,9 @@ const Dashboard = () => {
     const history = useNavigate()
     async function handleLogout() {
         setError("")
-    
+
         try {
+          
           //await logout()
           signOut(auth);
           history("/", { replace: true })
@@ -44,11 +45,7 @@ const Dashboard = () => {
             <strong>Email:</strong> {currentUser?.email}
           </Card.Body>
         </Card>
-        <div className="w-100 text-center mt-2">
-          <Button variant="link" onClick={handleLogout}>
-            Log Out
-          </Button>
-        </div>
+        
     </>
     )
 }

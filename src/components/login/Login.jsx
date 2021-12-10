@@ -65,6 +65,9 @@ const Login = () => {
                         <Button disabled={loading} className="w-100 mt-4" type="submit">Log In</Button>
                     </Form>
                     <div className="w-100 text-center mt-2">
+                        <Link to="/forgotpassword" className="text-decoration-none">Forgot Password?</Link>
+                    </div>
+                    <div className="w-100 text-center mt-2">
                     Need an account? <Link to="/signup" className="text-decoration-none">Sign Up</Link>
                     </div>
                 </Card.Body>

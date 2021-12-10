@@ -7,7 +7,7 @@ import { Home, Login, SignUp, Dashboard, CreateResume,
     Templates, STEMTemplate,
     ContactInformation, SummaryStatement, Education,
     TechnicalSkills, WorkExperience, ProjectExperience,
-    Certifications, Awards, Activities } from './components';
+    Certifications, Awards, Activities, Account } from './components';
 import './App.css';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 function App() {
@@ -21,6 +21,7 @@ function App() {
                         <Route path="/login" element={<Login />} />
                         <Route path="/signup" element={<SignUp />} />
                         <Route path="/dashboard" element={<PrivateRoute> <Dashboard /></PrivateRoute>}/>
+                        <Route path="/account" element={<PrivateRoute> <Account /></PrivateRoute>}/>
                         <Route path="/createresume" element={<CreateResume />} />
                     </Routes>
                 </Router>

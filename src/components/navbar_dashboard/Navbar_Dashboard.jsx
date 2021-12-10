@@ -6,17 +6,32 @@ import { Link, useNavigate } from "react-router-dom"
 import { useAuth } from "../../contexts/AuthContext"
 import { getAuth, signOut } from "firebase/auth";
 import { Card, Button, Alert } from "react-bootstrap"
+import { auth } from '../../firebase';
 
 
+const Menu = () => {
+    
+    const [error, setError] = useState("")
+    const history = useNavigate()
+    async function handleLogout() {
+        setError("")
 
+        try {
+        signOut(auth);
+        history("/", { replace: true })
+        } catch {
+        setError("Failed to log out")
+        }
+    }
+    return (
+    <>
+        <p><a href="#/dashboard" style={{ textDecoration: 'none', color: 'unset' }}>Dashboard</a></p>
+        <p><a href="#/account" style={{ textDecoration: 'none', color: 'unset' }}>Account</a></p>
+        <p><a onClick={handleLogout} style={{ textDecoration: 'none', color: 'unset' }}>Log Out</a></p>
 
-const Menu = () => (
-
-<>
-    <p><a href="#/dashboard" style={{ textDecoration: 'none', color: 'unset' }}>Dashboard</a></p>
-    <p><a href="#/account" style={{ textDecoration: 'none', color: 'unset' }}>Account</a></p>
-</>
-)
+    </>
+    )
+}
 
 const Navbar_Dashboard = () => {
     const [toggleMenu, setToggleMenu] = useState(false);
