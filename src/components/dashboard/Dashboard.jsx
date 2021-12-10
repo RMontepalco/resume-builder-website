@@ -7,7 +7,16 @@ import { getAnalytics } from "firebase/analytics";
 import { useAuth } from "../../contexts/AuthContext"
 import { Card, Button, Alert } from "react-bootstrap"
 import { Link, useNavigate } from "react-router-dom"
+import './dashboard.css'
+const Menu = () => (
+  <>
 
+  <input type="text" placeholder="Search Resume"  />
+   <p><a href="#/" style={{ textDecoration: 'none', color: 'unset'}}>My Resume</a></p>
+   <p><a href="#/"style={{ textDecoration: 'none', color: 'unset'}}>Recent</a></p>
+   <p><a href="#/" style={{ textDecoration: 'none', color: 'unset'}}>Bin</a></p>
+  </>
+)
 const Dashboard = () => {
     // const [user, setUser] = useState({});
 
@@ -38,13 +47,18 @@ const Dashboard = () => {
     return (
       <>
         <Navbar_Dashboard />
-        <Card>
-          <Card.Body>
-            <h2 className="text-center mb-4">Profile</h2>
-            {error && <Alert variant="danger">{error}</Alert>}
-            <strong>Email:</strong> {currentUser?.email}
-          </Card.Body>
-        </Card>
+        <div className="dashboard">
+          <div className='dashboard__menu'>
+            
+            <Menu />
+          </div>
+          <div className='dashboard__resume'>
+            resume
+          </div>
+
+
+
+        </div>
         
     </>
     )
