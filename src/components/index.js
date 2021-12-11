@@ -4,6 +4,7 @@ export { default as Login } from './login/Login';
 export { default as Dashboard } from './dashboard/Dashboard';
 export { default as CreateResume } from './createresume/CreateResume';
 export { Templates } from './templates/Templates';
+export { default as DisplayResume } from './displayresume/DisplayResume';
 export { default as ContactInformation } from './contactinformation/ContactInformation';
 export { default as SummaryStatement } from './summarystatement/SummaryStatement';
 export { default as Education } from './education/Education';

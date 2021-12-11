@@ -24,7 +24,8 @@ const ContactInformation = () => {
                 state: state,
                 zipCode: zipCode,
                 phoneNumber: phoneNumber,
-                emailAddress: email
+                emailAddress: email,
+                website: website
             });
             console.log("Contact information added to resume template.");
         } catch (error) {

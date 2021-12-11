@@ -1,0 +1,16 @@
+.display_resume {
+	background-color: lightgray;
+	padding: 10px;
+}
+
+.date {
+	text-align: right;
+}
+
+#name {
+	text-align: center;
+}
+
+#contact_info {
+	text-align: center;
+}

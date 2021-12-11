@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from '../../components/navbar/Navbar';
 import { Home, Login, SignUp, Dashboard,
-    Templates, STEMTemplate,
+    Templates, STEMTemplate, DisplayResume,
     ContactInformation, SummaryStatement, Education,
     TechnicalSkills, WorkExperience, ProjectExperience,
     Certifications, Awards, Activities } from '../../components';
@@ -11,6 +11,7 @@ const CreateResume = () => {
         <div>
             <Templates/>
             <STEMTemplate/>
+            <DisplayResume/>
         </div>
     )
 }

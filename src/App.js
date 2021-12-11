@@ -4,7 +4,7 @@ import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 //import {Header} from './containers';
 import { Home, Login, SignUp, Dashboard, CreateResume,
-    Templates, STEMTemplate,
+    Templates, STEMTemplate, DisplayResume,
     ContactInformation, SummaryStatement, Education,
     TechnicalSkills, WorkExperience, ProjectExperience,
     Certifications, Awards, Activities, Account } from './components';
