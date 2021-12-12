@@ -8,57 +8,53 @@ import { useAuth } from "../../contexts/AuthContext"
 import { Card, Button, Alert } from "react-bootstrap"
 import { Link, useNavigate } from "react-router-dom"
 import './dashboard.css'
+import { RiMenuFill, RiCloseLine } from 'react-icons/ri';
+import { BsPlusCircle } from 'react-icons/bs';
+
 const Menu = () => (
   <>
-
-  <input type="text" placeholder="Search Resume"  />
-   <p><a href="#/" style={{ textDecoration: 'none', color: 'unset'}}>My Resume</a></p>
-   <p><a href="#/"style={{ textDecoration: 'none', color: 'unset'}}>Recent</a></p>
-   <p><a href="#/" style={{ textDecoration: 'none', color: 'unset'}}>Bin</a></p>
+  
+    <input type="text"  placeholder="Search Resume"  />
+    <p><a href="#/dashboard" style={{ textDecoration: 'none', color: 'unset'}}>My Resume</a></p>
+    <p><a href=""style={{ textDecoration: 'none', color: 'unset'}}>Recent</a></p>
+    <p><a href="" style={{ textDecoration: 'none', color: 'unset'}}>Bin</a></p>
   </>
 )
 const Dashboard = () => {
-    // const [user, setUser] = useState({});
-
-    // // Display current user's email address
-    // onAuthStateChanged(auth, (currentUser) => {
-    //     setUser(currentUser);
-    // });
-
-    // // Log Out of Account (US 3, FR 3.1-3.3)
-    // const logoutUser = async (e)=> {
-    //     signOut(auth);
-    // }
-    const [error, setError] = useState("")
-    const { currentUser, logout } = useAuth()
-    const history = useNavigate()
-    async function handleLogout() {
-        setError("")
-
-        try {
-          
-          //await logout()
-          signOut(auth);
-          history("/", { replace: true })
-        } catch {
-          setError("Failed to log out")
-        }
-    }
-    return (
-      <>
-        <Navbar_Dashboard />
-        <div className="dashboard">
-          <div className='dashboard__menu'>
-            
-            <Menu />
-          </div>
-          <div className='dashboard__resume'>
-            resume
-          </div>
-
-
-
+  const [toggleMenu, setToggleMenu] = useState(false);
+  return (
+    <>
+      <Navbar_Dashboard />
+      <div className="dashboard">
+        <div className='dashboard__navbar'>      
+          <Menu />
         </div>
+        <div className="dashboard__navbar-menu">
+                    {toggleMenu 
+                        ? <RiCloseLine color="#000" size={27} onClick={() => setToggleMenu(false)} /> 
+                        : <RiMenuFill color="#000" size={27} onClick={() => setToggleMenu(true)} />
+                    }
+                    {toggleMenu && (
+                        <div className="dashboard__navbar-menu_container scale-up-center">
+                            <div className="dashboard__navbar-menu_container-links">  
+                              <Menu />
+                            </div>
+                        </div>
+                    )}
+                </div>
+        <div className='dashboard__resume'>
+          
+            <Card>
+              <Card.Body style={{display:'flex', flexDirection:'column',justifyContent:'center' , alignItems:'center'}}>
+                <Link to="/createresume" className="text-decoration-none"><BsPlusCircle color='#000' size={40}/></Link>
+              </Card.Body>
+            </Card>
+           
+        </div>
+
+
+
+      </div>
         
     </>
     )

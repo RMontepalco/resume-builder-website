@@ -22,7 +22,11 @@ function App() {
                         <Route path="/signup" element={<SignUp />} />
                         <Route path="/dashboard" element={<PrivateRoute> <Dashboard /></PrivateRoute>}/>
                         <Route path="/account" element={<PrivateRoute> <Account /></PrivateRoute>}/>
-                        <Route path="/createresume" element={<CreateResume />} />
+                        <Route path="/createresume" element={<PrivateRoute> <CreateResume /></PrivateRoute>}/>
+                        <Route path="/templates" element={<PrivateRoute> <Templates /></PrivateRoute>}/>
+                        <Route path="/stemplate" element={<PrivateRoute> <STEMTemplate /></PrivateRoute>}/>
+                        <Route path="/displayresume" element={<PrivateRoute> <DisplayResume /></PrivateRoute>}/>
+                        
                     </Routes>
                 </Router>
 

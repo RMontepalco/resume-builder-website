@@ -11,7 +11,7 @@ const CreateResume = () => {
         <div>
             <Templates/>
             <STEMTemplate/>
-            <DisplayResume/>
+
         </div>
     )
 }

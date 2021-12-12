@@ -3,11 +3,15 @@ import { auth, db } from '../../firebase';
 import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { templateID } from '../templates/Templates';
 import './displayresume.css'
+import { useAuth } from "../../contexts/AuthContext"
 
 const DisplayResume = () => {
     const [resume, setResume] = useState({});
+
+
     useEffect(async () => {
-        const resumeRef = await getDoc(doc(db, "users", "J3GoYccbaaZE2YJU5bP75oJCBSh1", "resumes", "7aeNHbYbiBZb9JZqVxYk"));
+        const resumeRef = await getDoc(doc(db, "users", auth.currentUser.uid , "resumes", "7aeNHbYbiBZb9JZqVxYk"));
+
         const resumeData = resumeRef.data();
         setResume(resumeData);
     }, [])
