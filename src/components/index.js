@@ -16,3 +16,4 @@ export { default as Awards } from './awards/Awards';
 export { default as Activities } from './activities/Activities';
 export { default as STEMTemplate } from './stemtemplate/STEMTemplate';
 export { default as Account } from './account/Account';
+export { default as Navbar_Dashboard } from './navbar_dashboard/Navbar_Dashboard';

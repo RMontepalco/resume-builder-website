@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { auth, db } from '../../firebase';
 import { collection, addDoc } from "firebase/firestore";
+import { Card } from 'react-bootstrap';
 
 var templateID;
 
@@ -23,7 +24,9 @@ const Templates = () => {
     }
 
     return (
-        <div>
+        <Card>
+            <Card.Body>
+                
             <h3>Resume Template selected: {radio}</h3>
             <form onSubmit={createTemplate}>
 
@@ -66,7 +69,8 @@ const Templates = () => {
 
                 <button>Next: Contact Information</button>
             </form>
-        </div>
+           </Card.Body>
+        </Card>
     )
 }
 
