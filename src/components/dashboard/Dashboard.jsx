@@ -64,9 +64,10 @@ const Dashboard = () => {
                 <Link to="/createresume" className="text-decoration-none"><BsPlusCircle color='#000' size={40}/></Link>
               </Card.Body>
             </Card>
-
+            
             <Card>
-              <Card.Body style={{display:'flex', flexDirection:'column',justifyContent:'center' , alignItems:'center'}}>                <div className="resume">
+              <Card.Body style={{display:'flex', flexDirection:'column',justifyContent:'center' , alignItems:'center'}}>                
+                <div className="resume">
                   <DisplayResume/>
                 </div>
               </Card.Body>

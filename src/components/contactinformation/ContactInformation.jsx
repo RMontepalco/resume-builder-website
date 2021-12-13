@@ -14,17 +14,12 @@ const ContactInformation = () => {
     const [phoneNumber, setPhoneNumber] = useState("");
     const [email, setEmail] = useState("");
     const [website, setWebsite] = useState("");
-<<<<<<< HEAD
     const history = useNavigate()
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false)
     // Log In to Account (US 2, FR 2.1-2.3)
     async function addContactInformation (e) {
-=======
 
-    // Add contact information to resume template (US 5, FR 5.1)
-    const addContactInformation = async (e) => {
->>>>>>> 0219d983aa9a5390490c3d225306582232380f09
         try {
             e.preventDefault();
             setError("")

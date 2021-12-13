@@ -18,9 +18,11 @@ const ProjectExperience = () => {
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false)
     // Add project experience to resume template (US 10, FR 10.1)
-    const addProjectExperience = async (e) => {
+    async function addProjectExperience (e) {
         try {
             e.preventDefault();
+            setError("")
+            setLoading(true)
             await updateDoc(doc(db, "users", auth.currentUser.uid, "resumes", templateID), {
                 projectName: projectName,
                 projectCompanyName: projectCompanyName,
@@ -30,43 +32,69 @@ const ProjectExperience = () => {
                 projectEndDate: projectEndDate,
                 projectDescription: projectDescription
             });
-            console.log("Project experience added to resume template.");
-        } catch (error) {
-            console.log(error);
+            history("/certifications", { replace: true });
+        } catch  {
+            setError("Error adding project experience")
         }
-        
+        setLoading(false) 
+    }
+    async function prev (e){
+        e.preventDefault();
+        history("/projectexperience", { replace: true });
     }
 
     return (
-        <div>
-            <h3>Project Experience</h3>
-            <form onSubmit={addProjectExperience}>
-                <input type="text" value={projectName}
-                onChange={(e) => setProjectName(e.target.value)}
-                placeholder="Project Name"/>
-                <input type="text" value={projectCompanyName}
-                onChange={(e) => setProjectCompanyName(e.target.value)}
-                placeholder="Company Name"/>
-                <input type="text" value={projectCity}
-                onChange={(e) => setProjectCity(e.target.value)}
-                placeholder="City"/>
-                <input type="text" value={projectState}
-                onChange={(e) => setProjectState(e.target.value)}
-                maxLength="2" 
-                placeholder="State"/>
-                <input type="month" value={projectStartDate}
-                onChange={(e) => setProjectStartDate(e.target.value)}
-                placeholder="Start Date"/>
-                <input type="month" value={projectEndDate}
-                onChange={(e) => setProjectEndDate(e.target.value)}
-                placeholder="End Date"/>
-                <input type="text" value={projectDescription}
-                onChange={(e) => setProjectDescription(e.target.value)}
-                placeholder="Description"/>
-                <button>Next: Certifications</button>
-            </form>
-            <button>Previous: Work Experience</button>
-        </div>
+        <>
+            <Navbar_Dashboard />
+            <div className='project'>
+                <Card>
+                    <Card.Body>
+                        <h3>Project Experience</h3>
+                        <Form onSubmit={addProjectExperience}>
+                            <Form.Group>
+                            <input type="text" value={projectName}
+                            onChange={(e) => setProjectName(e.target.value)}
+                            placeholder="Project Name"/>
+                            </Form.Group>
+                            <Form.Group>
+                            <input type="text" value={projectCompanyName}
+                            onChange={(e) => setProjectCompanyName(e.target.value)}
+                            placeholder="Company Name"/>
+                            </Form.Group>
+                            <Form.Group>
+                            <input type="text" value={projectCity}
+                            onChange={(e) => setProjectCity(e.target.value)}
+                            placeholder="City"/>
+                            </Form.Group>
+                            <Form.Group>
+                            <input type="text" value={projectState}
+                            onChange={(e) => setProjectState(e.target.value)}
+                            maxLength="2" 
+                            placeholder="State"/>
+                            </Form.Group>
+                            <Form.Group>
+                            <input type="month" value={projectStartDate}
+                            onChange={(e) => setProjectStartDate(e.target.value)}
+                            placeholder="Start Date"/>
+                            </Form.Group>
+                            <Form.Group>
+                            <input type="month" value={projectEndDate}
+                            onChange={(e) => setProjectEndDate(e.target.value)}
+                            placeholder="End Date"/>
+                            </Form.Group>
+                            <Form.Group>
+                            <input type="text" value={projectDescription}
+                            onChange={(e) => setProjectDescription(e.target.value)}
+                            placeholder="Description"/>
+                            </Form.Group>
+                            <Button disabled={loading} className="mt-2" type="submit">Next: Certifications</Button>
+                        </Form>
+                        <Button>Previous: Work Experience</Button>
+                    </Card.Body>
+                </Card>
+            </div>
+        </>
+        
     )
 }
 

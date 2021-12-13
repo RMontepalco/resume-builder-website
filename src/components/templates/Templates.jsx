@@ -8,18 +8,13 @@ var templateID;
 ;
 const Templates = () => {
     const [radio, setRadio] = useState();
-<<<<<<< HEAD
+
     const history = useNavigate()
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false)
     // Select a resume template (US 4, FR 4.1)
     async function handleSubmit (e) {
-=======
 
-    // Select and create a resume template (US 4, FR 4.1)
-    // Store resume ID and resume information into database (US 14, FR 14.1)
-    const createTemplate = async (e) => {
->>>>>>> 0219d983aa9a5390490c3d225306582232380f09
         try {
             e.preventDefault();
             setError("")
