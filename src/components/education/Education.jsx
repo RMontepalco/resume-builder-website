@@ -14,11 +14,17 @@ const Education = () => {
     const [educationStartDate, setEducationStartDate] = useState("");
     const [graduationDate, setGraduationDate] = useState("");
     const [relatedCoursework, set] = useState("");
+<<<<<<< HEAD
     const history = useNavigate()
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false)
     // Add education to resume template (US 7, FR 7.1)
     async function addEducation (e) {
+=======
+
+    // Add education to resume template (US 7, FR 7.1) 
+    const addEducation = async (e) => {
+>>>>>>> 0219d983aa9a5390490c3d225306582232380f09
         try {
             e.preventDefault();
             setError("")

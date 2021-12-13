@@ -12,7 +12,7 @@ const ProjectExperience = () => {
     const [projectEndDate, setProjectEndDate] = useState("");
     const [projectDescription, setProjectDescription] = useState("");
 
-    // Add project experience to resume template (US 10, FR 10.1)
+    // Add project experience to resume template (US 10, FR 10.1) 
     const addProjectExperience = async (e) => {
         try {
             e.preventDefault();

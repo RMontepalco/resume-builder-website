@@ -9,7 +9,7 @@ const Certifications = () => {
     const [certificationIssuedDate, setCertificationIssuedDate] = useState("");
     const [certificationExpirationDate, setCertificationExpirationDate] = useState("");
 
-    // Add certifications to resume template (US 11, FR 11.1)
+    // Add certifications to resume template (US 11, FR 11.1) 
     const addCertifications = async (e) => {
         try {
             e.preventDefault();
