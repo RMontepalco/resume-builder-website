@@ -8,17 +8,12 @@ import { Navbar_Dashboard } from  '../../components';
 import './technicalskill.css'
 const TechnicalSkills = () => {
     const [technicalSkills, setTechnicalSkills] = useState("");
-<<<<<<< HEAD
+
     const history = useNavigate()
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false)
     // Add technical skills to resume template (US 8, FR 8.1)
     async function addTechnicalSkills (e){
-=======
-
-    // Add technical skills to resume template (US 8, FR 8.1) 
-    const addTechnicalSkills = async (e) => {
->>>>>>> 0219d983aa9a5390490c3d225306582232380f09
         try {
             e.preventDefault();
             setError("")

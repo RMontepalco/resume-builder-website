@@ -8,17 +8,11 @@ import { Navbar_Dashboard } from  '../../components';
 import './summary.css'
 const SummaryStatement = () => {
     const [summaryStatement, setSummaryStatement] = useState("");
-<<<<<<< HEAD
     const history = useNavigate()
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false)
     // Add summary statement to resume template (US 6, FR 6.1)
     async function addSummaryStatement (e) {
-=======
-
-    // Add summary statement to resume template (US 6, FR 6.1) 
-    const addSummaryStatement = async (e) => {
->>>>>>> 0219d983aa9a5390490c3d225306582232380f09
         try {
             e.preventDefault();
             setError("")

@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 import { auth, db } from '../../firebase';
 import {doc, updateDoc } from "firebase/firestore";
 import { templateID } from '../templates/Templates';
-
+import { useNavigate } from 'react-router-dom';
+import { Button, Card, Form } from 'react-bootstrap';
+import { Navbar_Dashboard } from  '../../components';
+import './project.css'
 const ProjectExperience = () => {
     const [projectName, setProjectName] = useState("");
     const [projectCompanyName, setProjectCompanyName] = useState("");
@@ -11,8 +14,10 @@ const ProjectExperience = () => {
     const [projectStartDate, setProjectStartDate] = useState("");
     const [projectEndDate, setProjectEndDate] = useState("");
     const [projectDescription, setProjectDescription] = useState("");
-
-    // Add project experience to resume template (US 10, FR 10.1) 
+    const history = useNavigate()
+    const [error, setError] = useState("")
+    const [loading, setLoading] = useState(false)
+    // Add project experience to resume template (US 10, FR 10.1)
     const addProjectExperience = async (e) => {
         try {
             e.preventDefault();
