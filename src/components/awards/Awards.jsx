@@ -8,7 +8,7 @@ const Awards = () => {
     const [awardOrganization, setAwardOrganization] = useState("");
     const [awardGivenDate, setAwardGivenDate] = useState("");
 
-    // Add awards to resume template (US 12, FR 12.1)
+    // Add awards to resume template (US 12, FR 12.1) 
     const addAwards = async (e) => {
         try {
             e.preventDefault();

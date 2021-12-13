@@ -12,7 +12,7 @@ const Education = () => {
     const [graduationDate, setGraduationDate] = useState("");
     const [relatedCoursework, set] = useState("");
 
-    // Add education to resume template (US 7, FR 7.1)
+    // Add education to resume template (US 7, FR 7.1) 
     const addEducation = async (e) => {
         try {
             e.preventDefault();

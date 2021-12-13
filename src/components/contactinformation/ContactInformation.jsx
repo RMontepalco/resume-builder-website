@@ -13,7 +13,7 @@ const ContactInformation = () => {
     const [email, setEmail] = useState("");
     const [website, setWebsite] = useState("");
 
-    // Log In to Account (US 2, FR 2.1-2.3)
+    // Add contact information to resume template (US 5, FR 5.1)
     const addContactInformation = async (e) => {
         try {
             e.preventDefault();

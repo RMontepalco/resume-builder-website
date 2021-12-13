@@ -43,10 +43,13 @@ const SignUp = () => {
             setError("")
             setLoading(true)
             // await signup(emailRef.current.value, passwordRef.current.value)
+
+            // Create an Account (US 1, FR 1.1-1.4)
             await createUserWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value);
             await setDoc(doc(db, "users", auth.currentUser.uid), {
                 email: auth.currentUser.email
             })
+            
             history("/login", { replace: true })
         } catch {
             setError("Failed to create an account")

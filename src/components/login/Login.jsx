@@ -37,7 +37,10 @@ const Login = () => {
           setError("")
           setLoading(true)
           // await login(emailRef.current.value, passwordRef.current.value)
+
+          // Log In to Account (US 2, FR 2.1-2.3)
           await signInWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value)
+          
           history("/dashboard", { replace: true })
         } catch {
           setError("Failed to Log In")

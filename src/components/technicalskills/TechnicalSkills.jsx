@@ -6,7 +6,7 @@ import { templateID } from '../templates/Templates';
 const TechnicalSkills = () => {
     const [technicalSkills, setTechnicalSkills] = useState("");
 
-    // Add technical skills to resume template (US 8, FR 8.1)
+    // Add technical skills to resume template (US 8, FR 8.1) 
     const addTechnicalSkills = async (e) => {
         try {
             e.preventDefault();

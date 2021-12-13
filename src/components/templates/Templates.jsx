@@ -8,7 +8,8 @@ var templateID;
 const Templates = () => {
     const [radio, setRadio] = useState();
 
-    // Select a resume template (US 4, FR 4.1)
+    // Select and create a resume template (US 4, FR 4.1)
+    // Store resume ID and resume information into database (US 14, FR 14.1)
     const createTemplate = async (e) => {
         try {
             e.preventDefault();

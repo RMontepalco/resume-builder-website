@@ -10,7 +10,7 @@ const Activities = () => {
     const [activityEndDate, setActivityEndDate] = useState("");
     const [activityDescription, setActivityDescription] = useState("");
 
-    // Add activities to resume template (US 13, FR 13.1)
+    // Add activities to resume template (US 13, FR 13.1) 
     const addActivities = async (e) => {
         try {
             e.preventDefault();
@@ -49,7 +49,7 @@ const Activities = () => {
                 placeholder="Description"/>
                 <button>Next: Resume Review</button>
             </form>
-            <button>Previous: Awards</button>
+            <button>Finish Resume Creation</button>
         </div>
     )
 }

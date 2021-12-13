@@ -12,7 +12,7 @@ const WorkExperience = () => {
     const [workEndDate, setWorkEndDate] = useState("");
     const [workDescription, setWorkDescription] = useState("");
 
-    // Add work experience to resume template (US 9, FR 9.1)
+    // Add work experience to resume template (US 9, FR 9.1) 
     const addWorkExperience = async (e) => {
         try {
             e.preventDefault();

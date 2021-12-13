@@ -6,7 +6,7 @@ import { templateID } from '../templates/Templates';
 const SummaryStatement = () => {
     const [summaryStatement, setSummaryStatement] = useState("");
 
-    // Add summary statement to resume template (US 6, FR 6.1)
+    // Add summary statement to resume template (US 6, FR 6.1) 
     const addSummaryStatement = async (e) => {
         try {
             e.preventDefault();
