@@ -30,7 +30,7 @@ const Activities = () => {
                 activityEndDate: activityEndDate,
                 activityDescription: activityDescription
             });
-            history("/displayresume", { replace: true });
+            history("/dashboard", { replace: true });
         } catch  {
             setError("Fail to add activities")
         }
