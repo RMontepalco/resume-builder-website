@@ -73,7 +73,7 @@ const Activities = () => {
                             onChange={(e) => setActivityDescription(e.target.value)}
                             placeholder="Description"/>
                             </Form.Group>
-                            <Button disabled={loading} className="mt-4">Finish Resume Creation</Button>
+                            <Button disabled={loading} className="mt-4" type="submit">Finish Resume Creation</Button>
                         </Form>
                         <Button className="mt-4 mb-2" onClick={prev}>Previous: Award</Button>
                     </Card.Body>
