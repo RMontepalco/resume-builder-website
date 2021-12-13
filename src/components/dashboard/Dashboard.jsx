@@ -27,7 +27,7 @@ const Dashboard = () => {
 
   useEffect(async () => {
       //const resumeRef = await getDoc(doc(db, "users", auth.currentUser.uid , "resumes", "7aeNHbYbiBZb9JZqVxYk"));
-      const resumeRef = await getDocs(collection(db, "users", auth.currentUser.uid, "resumes"));
+      const resumeRef = await getDocs(collection(db, "users", "J3GoYccbaaZE2YJU5bP75oJCBSh1", "resumes"));
       //const resumeData = resumeRef.data();
       //setResume(resumeRef);
       resumeRef.forEach((r) => {
