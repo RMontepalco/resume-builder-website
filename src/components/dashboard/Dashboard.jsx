@@ -26,14 +26,9 @@ const Dashboard = () => {
   const [resume, setResume] = useState({});
 
   useEffect(async () => {
-      //const resumeRef = await getDoc(doc(db, "users", auth.currentUser.uid , "resumes", "7aeNHbYbiBZb9JZqVxYk"));
-      const resumeRef = await getDocs(collection(db, "users", "J3GoYccbaaZE2YJU5bP75oJCBSh1", "resumes"));
+      //const resumeRef = await getDoc(doc(db, "users","J3GoYccbaaZE2YJU5bP75oJCBSh1", "resumes", "7aeNHbYbiBZb9JZqVxYk"));
       //const resumeData = resumeRef.data();
-      //setResume(resumeRef);
-      resumeRef.forEach((r) => {
-        console.log(r.id);
-        setResume(r);
-      })
+      //setResume(resumeData);
   }, [])
 
 
@@ -62,14 +57,6 @@ const Dashboard = () => {
             <Card>
               <Card.Body style={{display:'flex', flexDirection:'column',justifyContent:'center' , alignItems:'center'}}>
                 <Link to="/createresume" className="text-decoration-none"><BsPlusCircle color='#000' size={40}/></Link>
-              </Card.Body>
-            </Card>
-            
-            <Card>
-              <Card.Body style={{display:'flex', flexDirection:'column',justifyContent:'center' , alignItems:'center'}}>                
-                <div className="resume">
-                  <DisplayResume/>
-                </div>
               </Card.Body>
             </Card>
            

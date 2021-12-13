@@ -10,13 +10,14 @@ const DisplayResume = () => {
 
 
     useEffect(async () => {
-        const resumeRef = await getDoc(doc(db, "users", auth.currentUser.uid , "resumes", "7aeNHbYbiBZb9JZqVxYk"));
+        //const resumeRef = await getDoc(doc(db, "users", auth.currentUser.uid , "resumes", "7aeNHbYbiBZb9JZqVxYk"));
 
-        const resumeData = resumeRef.data();
-        setResume(resumeData);
+        //const resumeData = resumeRef.data();
+        //setResume(resumeData);
     }, [])
 
     return (
+        {/*
         <div className="display_resume">
             <h4 id="name">{resume.firstName} {resume.lastName}</h4>
             <p id="contact_info">{resume.emailAddress} | {resume.phoneNumber} | {resume.city}, {resume.state} {resume.zipCode} | {resume.website}</p>
@@ -54,6 +55,7 @@ const DisplayResume = () => {
             <p><b>{resume.activityRole}</b>, {resume.activityName}</p>
             <p className="date">{resume.activityStartDate} to {resume.activityEndDate}</p>
         </div>
+        */}
     )
 }
 
