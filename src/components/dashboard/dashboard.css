@@ -69,8 +69,12 @@
     z-index: 1;
     
 }
+
 .dashboard__navbar-menu_container p{
     margin: 1rem 0;
+}
+.dashboard__navbar-menu_container p:hover{
+    color: #0A8DE0;
 }
 @media screen and (max-width: 1050px){
     .dashboard__navbar{
@@ -93,6 +97,9 @@
 @media screen and (max-width: 550px){
     .dashboard{
         padding: 2rem;
+    }
+    .dashboard__resume{
+        flex-direction: column;
     }
     /* .dashboard__navbar-menu{
         min-width: 100px; 

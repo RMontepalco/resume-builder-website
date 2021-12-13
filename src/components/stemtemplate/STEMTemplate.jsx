@@ -4,20 +4,22 @@ import { Home, Login, SignUp, Dashboard,
     Templates, 
     ContactInformation, SummaryStatement, Education,
     TechnicalSkills, WorkExperience, ProjectExperience,
-    Certifications, Awards, Activities } from '../../components';
+    Certifications, Awards, Activities, Navbar_Dashboard} from '../../components';
 
 const STEMTemplate = () => {
+    
     return (
         <div>
+            <Navbar_Dashboard />
             <ContactInformation/>
-            <SummaryStatement/>
+            {/* <SummaryStatement/>
             <Education/>
             <TechnicalSkills/>
             <WorkExperience/>
             <ProjectExperience/>
             <Certifications/>
             <Awards/>
-            <Activities/>
+            <Activities/> */}
         </div>
     )
 }

@@ -11,7 +11,6 @@ const CreateResume = () => {
         <div>
             <Navbar_Dashboard/>
             <Templates/>
-            <STEMTemplate/>
 
         </div>
     )

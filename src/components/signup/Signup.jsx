@@ -60,7 +60,7 @@ const SignUp = () => {
         <div className="signup">
             <Card className="signup__card">
                 <Card.Body>
-                    <h2 className="text-center mb-4">Sign Up</h2>
+                    <h2 className="text-center ">Sign Up</h2>
                     {error && <Alert variant="danger">{error}</Alert>}
                     <Form onSubmit={handleSubmit}>
                         <Form.Group id="email">
@@ -75,9 +75,9 @@ const SignUp = () => {
                             <Form.Label>Password Confirm</Form.Label>
                             <Form.Control type="password" ref={passwordConfirmRef} required/>
                         </Form.Group>
-                        <Button disabled={loading} className="w-100 mt-4" type="submit">Sign Up</Button>
+                        <Button disabled={loading} className="w-100 mt-2" type="submit">Sign Up</Button>
                     </Form>
-                    <div className="w-100 text-center mt-2">
+                    <div className="w-100 text-center mb-2">
                         Already have an account? <Link to="/login" className="text-decoration-none">Log In</Link>
                     </div>
                 </Card.Body>

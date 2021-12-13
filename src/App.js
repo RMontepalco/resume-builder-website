@@ -26,7 +26,16 @@ function App() {
                         <Route path="/templates" element={<PrivateRoute> <Templates /></PrivateRoute>}/>
                         <Route path="/stemplate" element={<PrivateRoute> <STEMTemplate /></PrivateRoute>}/>
                         <Route path="/displayresume" element={<PrivateRoute> <DisplayResume /></PrivateRoute>}/>
-                        
+            
+                        <Route path="/summarystatement" element={<PrivateRoute> <SummaryStatement /></PrivateRoute>}/>
+                        <Route path="/education" element={<PrivateRoute> <Education /></PrivateRoute>}/>
+                        <Route path="/technicalskills" element={<PrivateRoute> <TechnicalSkills /></PrivateRoute>}/>
+                        <Route path="/workexperience" element={<PrivateRoute> <WorkExperience /></PrivateRoute>}/>
+                        <Route path="/projectexperience" element={<PrivateRoute> <ProjectExperience /></PrivateRoute>}/>
+                        <Route path="/certifications" element={<PrivateRoute> <Certifications /></PrivateRoute>}/>
+                        <Route path="/awards" element={<PrivateRoute> <Awards /></PrivateRoute>}/>
+                        <Route path="/activities" element={<PrivateRoute> <Activities /></PrivateRoute>}/>
+
                     </Routes>
                 </Router>
 
