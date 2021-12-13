@@ -40,56 +40,56 @@ const ProjectExperience = () => {
     }
     async function prev (e){
         e.preventDefault();
-        history("/projectexperience", { replace: true });
+        history("/workexperience", { replace: true });
     }
 
     return (
         <>
             <Navbar_Dashboard />
             <div className='project'>
-                <Card>
+                <Card style={{height:'500px', width:'400px'}}>
                     <Card.Body>
-                        <h3>Project Experience</h3>
+                        <h2>Project Experience</h2>
                         <Form onSubmit={addProjectExperience}>
-                            <Form.Group>
+                            <Form.Group style={{marginBottom:'1rem'}}>
                             <input type="text" value={projectName}
                             onChange={(e) => setProjectName(e.target.value)}
                             placeholder="Project Name"/>
                             </Form.Group>
-                            <Form.Group>
+                            <Form.Group style={{marginBottom:'1rem'}}>
                             <input type="text" value={projectCompanyName}
                             onChange={(e) => setProjectCompanyName(e.target.value)}
                             placeholder="Company Name"/>
                             </Form.Group>
-                            <Form.Group>
+                            <Form.Group style={{marginBottom:'1rem'}}>
                             <input type="text" value={projectCity}
                             onChange={(e) => setProjectCity(e.target.value)}
                             placeholder="City"/>
                             </Form.Group>
-                            <Form.Group>
+                            <Form.Group style={{marginBottom:'1rem'}}>
                             <input type="text" value={projectState}
                             onChange={(e) => setProjectState(e.target.value)}
                             maxLength="2" 
                             placeholder="State"/>
                             </Form.Group>
-                            <Form.Group>
+                            <Form.Group style={{marginBottom:'1rem'}}>
                             <input type="month" value={projectStartDate}
                             onChange={(e) => setProjectStartDate(e.target.value)}
                             placeholder="Start Date"/>
                             </Form.Group>
-                            <Form.Group>
+                            <Form.Group style={{marginBottom:'1rem'}}>
                             <input type="month" value={projectEndDate}
                             onChange={(e) => setProjectEndDate(e.target.value)}
                             placeholder="End Date"/>
                             </Form.Group>
-                            <Form.Group>
+                            <Form.Group style={{marginBottom:'1rem'}}>
                             <input type="text" value={projectDescription}
                             onChange={(e) => setProjectDescription(e.target.value)}
                             placeholder="Description"/>
                             </Form.Group>
                             <Button disabled={loading} className="mt-2" type="submit">Next: Certifications</Button>
                         </Form>
-                        <Button>Previous: Work Experience</Button>
+                        <Button className="mt-4 mb-2" onClick={prev}>Previous: Work Experience</Button>
                     </Card.Body>
                 </Card>
             </div>
